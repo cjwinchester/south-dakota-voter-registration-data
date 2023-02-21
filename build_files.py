@@ -45,7 +45,6 @@ def build_files():
     headers_wide_set = set()
 
     for file in files:
-        print(file)
         with open(file, 'r') as infile:
             reader = csv.DictReader(infile)
 
@@ -53,7 +52,6 @@ def build_files():
                 date = row.get('date')
                 county = row.get('county')
                 fips = lookup[county]
-                print(county, fips, date)
 
                 for header in list(row.keys()):
                     if header not in ['date', 'county']:
