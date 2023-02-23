@@ -11,6 +11,6 @@ The data comes from the South Dakota Secretary of State's website:
 
 Files are named after the snapshot date in `YYYY-MM-DD.*` format. Individual CSV files live in the [`data`](data) folder. The original PDFs, some of them rendered from web pages, live in the [`pdfs`](pdfs) folder.
 
-The [`build_files.py`](build_files.py) script combines the data into two files and adds a new column, `county_fips`:
-- [`sd-voter-registration-by-county-long.csv`](sd-voter-registration-by-county-long.csv) (tidy format)
-- [`sd-voter-registration-by-county-wide.csv`](sd-voter-registration-by-county-wide.csv) (wide format)
+The [`build_files.py`](build_files.py) script creates two combined files with a new column, `county_fips`:
+- [`sd-voter-registration-data-long.csv`](sd-voter-registration-data-long.csv) (tidy format)
+- [`sd-voter-registration-data-wide.csv`](sd-voter-registration-data-wide.csv) (wide format)
