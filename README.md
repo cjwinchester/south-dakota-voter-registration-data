@@ -1,9 +1,9 @@
 # South Dakota voter registration data
 This repository contains county-level voter registration data for South Dakota, broken down by party.
 
-_Updated February 23, 2023_
+_Updated February 26, 2023_
 
-The data -- 142 snapshots in time -- comes from the South Dakota Secretary of State's website:
+The data -- 143 snapshots in time -- comes from the South Dakota Secretary of State's website:
 - [December 2015 to present](https://sdsos.gov/elections-voting/upcoming-elections/voter-registration-totals/voter-registration-by-county.aspx): Monthly snapshots, plus election totals
 - June 1976 to November 2014 ([source 1](https://sdsos.gov/elections-voting/election-resources/election-history/election-history-search.aspx), [source 2](https://sdsos.gov/elections-voting/election-resources/election-history/official-election-returns.aspx)): Election totals, typically less detailed
 
@@ -14,3 +14,5 @@ Files are named after the snapshot date in `YYYY-MM-DD.*` format. Individual CSV
 The [`build_files.py`](build_files.py) script creates two combined files with a new column, `county_fips`:
 - [`sd-voter-registration-data-long.csv`](sd-voter-registration-data-long.csv) (tidy format)
 - [`sd-voter-registration-data-wide.csv`](sd-voter-registration-data-wide.csv) (wide format)
+
+(I used a combination of [Tabula](https://tabula.technology/), hand-entry and [some of the tools mentioned in this repo](https://github.com/chadday/nicar_ocr) to extract the data from the PDFs.)
