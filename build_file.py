@@ -24,25 +24,15 @@ def get_fips_lookup():
     return lookup
 
 
-def build_files():
+def build_file():
 
     lookup = get_fips_lookup()
 
-    data_filepath_long = 'sd-voter-registration-data-long.csv'
-    data_filepath_wide = 'sd-voter-registration-data-wide.csv'
+    data_filepath = 'sd-voter-registration-data.csv'
 
     files = glob.glob('data/*.csv')
 
-    long_data = []
-    wide_data = []
-
-    headers_wide = [
-        'date',
-        'county',
-        'county_fips'
-    ]
-
-    headers_wide_set = set()
+    data_out = []
 
     for file in files:
         with open(file, 'r') as infile:
@@ -55,7 +45,7 @@ def build_files():
 
                 for header in list(row.keys()):
                     if header not in ['date', 'county']:
-                        long_data.append({
+                        data_out.append({
                             'date': date,
                             'county': county,
                             'county_fips': fips,
@@ -64,13 +54,9 @@ def build_files():
                         })
 
                 row['county_fips'] = fips
-                wide_data.append(row)
-                headers_wide_set.update(
-                    [x for x in list(row.keys()) if x not in headers_wide]
-                )
 
-    data_sorted_long = sorted(
-        long_data,
+    data_sorted = sorted(
+        data_out,
         key=lambda x: (
             x['date'],
             x['county_fips'],
@@ -78,36 +64,17 @@ def build_files():
         )
     )
 
-    data_sorted_wide = sorted(
-        wide_data,
-        key=lambda x: (
-            x['date'],
-            x['county_fips']
-        )
-    )
-
-    with open(data_filepath_long, 'w') as outfile:
+    with open(data_filepath, 'w') as outfile:
         writer = csv.DictWriter(
             outfile,
-            fieldnames=list(data_sorted_long[0].keys())
+            fieldnames=list(data_sorted[0].keys())
         )
 
         writer.writeheader()
-        writer.writerows(data_sorted_long)
+        writer.writerows(data_sorted)
 
-    print(f'Wrote {data_filepath_long}')
-
-    with open(data_filepath_wide, 'w') as outfile:
-        writer = csv.DictWriter(
-            outfile,
-            fieldnames=headers_wide + sorted(list(headers_wide_set))
-        )
-
-        writer.writeheader()
-        writer.writerows(data_sorted_wide)
-
-    print(f'Wrote {data_filepath_wide}')
+    print(f'Wrote {data_filepath}')
 
 
 if __name__ == '__main__':
-    build_files()
+    build_file()
