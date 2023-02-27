@@ -1,7 +1,7 @@
 # South Dakota voter registration data
 This repository contains county-level voter registration data for South Dakota, broken down by party.
 
-_Updated February 26, 2023_
+_Updated February 27, 2023_
 
 The data -- 143 snapshots in time -- comes from the South Dakota Secretary of State's website:
 - [December 2015 to present](https://sdsos.gov/elections-voting/upcoming-elections/voter-registration-totals/voter-registration-by-county.aspx): Monthly snapshots, plus election totals
@@ -11,4 +11,6 @@ The data -- 143 snapshots in time -- comes from the South Dakota Secretary of St
 
 Files are named after the snapshot date in `YYYY-MM-DD.*` format. Individual CSV files live in the [`data`](data) folder. The original PDFs, some of them rendered from web pages, live in the [`pdfs`](pdfs) folder.
 
-The [`build_file.py`](build_file.py) script creates a (tidy) combined file with a new column, `county_fips`: [`sd-voter-registration-data.csv`](sd-voter-registration-data.csv). The columns in this file are `date,county,county_fips,party,voters` -- note that _inactive_ is sometimes the "party" name, so if your goal is to analyze active voter registration, you'd need to filter these out first.
+The [`build_files.py`](build_files.py) script creates two (tidy) combined files with a new column, `county_fips`:
+- [`sd-voter-registration-data.csv`](sd-voter-registration-data.csv): The columns in this file are `date,county,county_fips,party,voters` -- note that _inactive_ is sometimes the "party" name, so if your goal is to analyze active voter registration, you'd need to filter these out first.
+[`sd-voter-registration-data-simplified.csv`](sd-voter-registration-data-simplified.csv): This file collapses all non-R/D party categories into an "other" category and removes the inactive records, simplifying many analyses.
