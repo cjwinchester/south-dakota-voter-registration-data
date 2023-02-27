@@ -48,6 +48,7 @@ def build_files():
                     data_out_simplified[date] = {}
 
                 if not data_out_simplified.get(date).get(fips):
+
                     data_out_simplified[date][fips] = {
                         'county': county,
                         'republican': 0,
@@ -110,6 +111,15 @@ def build_files():
             rec = fips_codes[fips]
             county = rec.get('county')
 
+            # skip Washabaugh records
+            if county == 'Washabaugh':
+                continue
+
+            # update shannon/oglala
+            if county == 'Shannon' and int(fips) == 46113:
+                county = 'Oglala Lakota'
+                fips = '46102'
+
             for header in list(rec.keys()):
 
                 if header != 'county':
@@ -118,7 +128,7 @@ def build_files():
                         'county': county,
                         'county_fips': fips,
                         'party': header,
-                        'voters': rec.get(header)
+                        'voters': int(rec.get(header))
                     })
 
     data_out_simplified_sorted = sorted(

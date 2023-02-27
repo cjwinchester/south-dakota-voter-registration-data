@@ -149,6 +149,9 @@ date,county,county_fips,party,voters
 1976-05-17,Moody,46101,democratic,2208
 1976-05-17,Moody,46101,other,782
 1976-05-17,Moody,46101,republican,1681
+1976-05-17,Oglala Lakota,46102,democratic,1518
+1976-05-17,Oglala Lakota,46102,other,185
+1976-05-17,Oglala Lakota,46102,republican,450
 1976-05-17,Pennington,46103,democratic,14099
 1976-05-17,Pennington,46103,other,3618
 1976-05-17,Pennington,46103,republican,15779
@@ -164,9 +167,6 @@ date,county,county_fips,party,voters
 1976-05-17,Sanborn,46111,democratic,1101
 1976-05-17,Sanborn,46111,other,220
 1976-05-17,Sanborn,46111,republican,1159
-1976-05-17,Shannon,46113,democratic,1518
-1976-05-17,Shannon,46113,other,185
-1976-05-17,Shannon,46113,republican,450
 1976-05-17,Spink,46115,democratic,3031
 1976-05-17,Spink,46115,other,450
 1976-05-17,Spink,46115,republican,2454
@@ -191,9 +191,6 @@ date,county,county_fips,party,voters
 1976-05-17,Walworth,46129,democratic,1659
 1976-05-17,Walworth,46129,other,271
 1976-05-17,Walworth,46129,republican,2901
-1976-05-17,Washabaugh,46131,democratic,366
-1976-05-17,Washabaugh,46131,other,38
-1976-05-17,Washabaugh,46131,republican,273
 1976-05-17,Yankton,46135,democratic,4510
 1976-05-17,Yankton,46135,other,828
 1976-05-17,Yankton,46135,republican,5318
@@ -350,6 +347,9 @@ date,county,county_fips,party,voters
 1976-10-18,Moody,46101,democratic,2268
 1976-10-18,Moody,46101,other,779
 1976-10-18,Moody,46101,republican,1717
+1976-10-18,Oglala Lakota,46102,democratic,1759
+1976-10-18,Oglala Lakota,46102,other,226
+1976-10-18,Oglala Lakota,46102,republican,485
 1976-10-18,Pennington,46103,democratic,15867
 1976-10-18,Pennington,46103,other,4314
 1976-10-18,Pennington,46103,republican,17095
@@ -365,9 +365,6 @@ date,county,county_fips,party,voters
 1976-10-18,Sanborn,46111,democratic,1101
 1976-10-18,Sanborn,46111,other,225
 1976-10-18,Sanborn,46111,republican,1180
-1976-10-18,Shannon,46113,democratic,1759
-1976-10-18,Shannon,46113,other,226
-1976-10-18,Shannon,46113,republican,485
 1976-10-18,Spink,46115,democratic,3171
 1976-10-18,Spink,46115,other,535
 1976-10-18,Spink,46115,republican,2506
@@ -392,9 +389,6 @@ date,county,county_fips,party,voters
 1976-10-18,Walworth,46129,democratic,1715
 1976-10-18,Walworth,46129,other,296
 1976-10-18,Walworth,46129,republican,2907
-1976-10-18,Washabaugh,46131,democratic,417
-1976-10-18,Washabaugh,46131,other,72
-1976-10-18,Washabaugh,46131,republican,280
 1976-10-18,Yankton,46135,democratic,4866
 1976-10-18,Yankton,46135,other,894
 1976-10-18,Yankton,46135,republican,5510
@@ -551,6 +545,9 @@ date,county,county_fips,party,voters
 1978-05-22,Moody,46101,democratic,2368
 1978-05-22,Moody,46101,other,617
 1978-05-22,Moody,46101,republican,1654
+1978-05-22,Oglala Lakota,46102,democratic,1583
+1978-05-22,Oglala Lakota,46102,other,248
+1978-05-22,Oglala Lakota,46102,republican,479
 1978-05-22,Pennington,46103,democratic,14004
 1978-05-22,Pennington,46103,other,3294
 1978-05-22,Pennington,46103,republican,15187
@@ -566,9 +563,6 @@ date,county,county_fips,party,voters
 1978-05-22,Sanborn,46111,democratic,1101
 1978-05-22,Sanborn,46111,other,179
 1978-05-22,Sanborn,46111,republican,1111
-1978-05-22,Shannon,46113,democratic,1583
-1978-05-22,Shannon,46113,other,248
-1978-05-22,Shannon,46113,republican,479
 1978-05-22,Spink,46115,democratic,3065
 1978-05-22,Spink,46115,other,472
 1978-05-22,Spink,46115,republican,2409
@@ -749,6 +743,9 @@ date,county,county_fips,party,voters
 1978-10-23,Moody,46101,democratic,2457
 1978-10-23,Moody,46101,other,656
 1978-10-23,Moody,46101,republican,1731
+1978-10-23,Oglala Lakota,46102,democratic,2945
+1978-10-23,Oglala Lakota,46102,other,418
+1978-10-23,Oglala Lakota,46102,republican,505
 1978-10-23,Pennington,46103,democratic,15587
 1978-10-23,Pennington,46103,other,3836
 1978-10-23,Pennington,46103,republican,16284
@@ -764,9 +761,6 @@ date,county,county_fips,party,voters
 1978-10-23,Sanborn,46111,democratic,1136
 1978-10-23,Sanborn,46111,other,198
 1978-10-23,Sanborn,46111,republican,1159
-1978-10-23,Shannon,46113,democratic,2945
-1978-10-23,Shannon,46113,other,418
-1978-10-23,Shannon,46113,republican,505
 1978-10-23,Spink,46115,democratic,3107
 1978-10-23,Spink,46115,other,486
 1978-10-23,Spink,46115,republican,2405
@@ -947,6 +941,9 @@ date,county,county_fips,party,voters
 1980-05-19,Moody,46101,democratic,2477
 1980-05-19,Moody,46101,other,607
 1980-05-19,Moody,46101,republican,1715
+1980-05-19,Oglala Lakota,46102,democratic,2989
+1980-05-19,Oglala Lakota,46102,other,439
+1980-05-19,Oglala Lakota,46102,republican,470
 1980-05-19,Pennington,46103,democratic,14893
 1980-05-19,Pennington,46103,other,2785
 1980-05-19,Pennington,46103,republican,17393
@@ -962,9 +959,6 @@ date,county,county_fips,party,voters
 1980-05-19,Sanborn,46111,democratic,1059
 1980-05-19,Sanborn,46111,other,190
 1980-05-19,Sanborn,46111,republican,1116
-1980-05-19,Shannon,46113,democratic,2989
-1980-05-19,Shannon,46113,other,439
-1980-05-19,Shannon,46113,republican,470
 1980-05-19,Spink,46115,democratic,2984
 1980-05-19,Spink,46115,other,448
 1980-05-19,Spink,46115,republican,2355
@@ -1145,6 +1139,9 @@ date,county,county_fips,party,voters
 1980-10-20,Moody,46101,democratic,2542
 1980-10-20,Moody,46101,other,627
 1980-10-20,Moody,46101,republican,1759
+1980-10-20,Oglala Lakota,46102,democratic,3065
+1980-10-20,Oglala Lakota,46102,other,467
+1980-10-20,Oglala Lakota,46102,republican,519
 1980-10-20,Pennington,46103,democratic,17169
 1980-10-20,Pennington,46103,other,3890
 1980-10-20,Pennington,46103,republican,20020
@@ -1160,9 +1157,6 @@ date,county,county_fips,party,voters
 1980-10-20,Sanborn,46111,democratic,1164
 1980-10-20,Sanborn,46111,other,171
 1980-10-20,Sanborn,46111,republican,1143
-1980-10-20,Shannon,46113,democratic,3065
-1980-10-20,Shannon,46113,other,467
-1980-10-20,Shannon,46113,republican,519
 1980-10-20,Spink,46115,democratic,3091
 1980-10-20,Spink,46115,other,510
 1980-10-20,Spink,46115,republican,2482
@@ -1343,6 +1337,9 @@ date,county,county_fips,party,voters
 1982-05-17,Moody,46101,democratic,2268
 1982-05-17,Moody,46101,other,477
 1982-05-17,Moody,46101,republican,1629
+1982-05-17,Oglala Lakota,46102,democratic,2827
+1982-05-17,Oglala Lakota,46102,other,397
+1982-05-17,Oglala Lakota,46102,republican,448
 1982-05-17,Pennington,46103,democratic,14909
 1982-05-17,Pennington,46103,other,3752
 1982-05-17,Pennington,46103,republican,18436
@@ -1358,9 +1355,6 @@ date,county,county_fips,party,voters
 1982-05-17,Sanborn,46111,democratic,1088
 1982-05-17,Sanborn,46111,other,134
 1982-05-17,Sanborn,46111,republican,1098
-1982-05-17,Shannon,46113,democratic,2827
-1982-05-17,Shannon,46113,other,397
-1982-05-17,Shannon,46113,republican,448
 1982-05-17,Spink,46115,democratic,2824
 1982-05-17,Spink,46115,other,403
 1982-05-17,Spink,46115,republican,2322
@@ -1541,6 +1535,9 @@ date,county,county_fips,party,voters
 1982-10-18,Moody,46101,democratic,2243
 1982-10-18,Moody,46101,other,522
 1982-10-18,Moody,46101,republican,1639
+1982-10-18,Oglala Lakota,46102,democratic,2977
+1982-10-18,Oglala Lakota,46102,other,416
+1982-10-18,Oglala Lakota,46102,republican,462
 1982-10-18,Pennington,46103,democratic,15705
 1982-10-18,Pennington,46103,other,4043
 1982-10-18,Pennington,46103,republican,19343
@@ -1556,9 +1553,6 @@ date,county,county_fips,party,voters
 1982-10-18,Sanborn,46111,democratic,1094
 1982-10-18,Sanborn,46111,other,139
 1982-10-18,Sanborn,46111,republican,1128
-1982-10-18,Shannon,46113,democratic,2977
-1982-10-18,Shannon,46113,other,416
-1982-10-18,Shannon,46113,republican,462
 1982-10-18,Spink,46115,democratic,2883
 1982-10-18,Spink,46115,other,422
 1982-10-18,Spink,46115,republican,2373
@@ -1739,6 +1733,9 @@ date,county,county_fips,party,voters
 1984-05-21,Moody,46101,democratic,2072
 1984-05-21,Moody,46101,other,406
 1984-05-21,Moody,46101,republican,1558
+1984-05-21,Oglala Lakota,46102,democratic,3244
+1984-05-21,Oglala Lakota,46102,other,471
+1984-05-21,Oglala Lakota,46102,republican,483
 1984-05-21,Pennington,46103,democratic,15099
 1984-05-21,Pennington,46103,other,3905
 1984-05-21,Pennington,46103,republican,19822
@@ -1754,9 +1751,6 @@ date,county,county_fips,party,voters
 1984-05-21,Sanborn,46111,democratic,1005
 1984-05-21,Sanborn,46111,other,125
 1984-05-21,Sanborn,46111,republican,1082
-1984-05-21,Shannon,46113,democratic,3244
-1984-05-21,Shannon,46113,other,471
-1984-05-21,Shannon,46113,republican,483
 1984-05-21,Spink,46115,democratic,2764
 1984-05-21,Spink,46115,other,418
 1984-05-21,Spink,46115,republican,2290
@@ -1937,6 +1931,9 @@ date,county,county_fips,party,voters
 1984-10-22,Moody,46101,democratic,2183
 1984-10-22,Moody,46101,other,448
 1984-10-22,Moody,46101,republican,1616
+1984-10-22,Oglala Lakota,46102,democratic,2676
+1984-10-22,Oglala Lakota,46102,other,305
+1984-10-22,Oglala Lakota,46102,republican,391
 1984-10-22,Pennington,46103,democratic,16586
 1984-10-22,Pennington,46103,other,4792
 1984-10-22,Pennington,46103,republican,23166
@@ -1952,9 +1949,6 @@ date,county,county_fips,party,voters
 1984-10-22,Sanborn,46111,democratic,1025
 1984-10-22,Sanborn,46111,other,136
 1984-10-22,Sanborn,46111,republican,1093
-1984-10-22,Shannon,46113,democratic,2676
-1984-10-22,Shannon,46113,other,305
-1984-10-22,Shannon,46113,republican,391
 1984-10-22,Spink,46115,democratic,2806
 1984-10-22,Spink,46115,other,481
 1984-10-22,Spink,46115,republican,2370
@@ -2135,6 +2129,9 @@ date,county,county_fips,party,voters
 1986-05-19,Moody,46101,democratic,1969
 1986-05-19,Moody,46101,other,402
 1986-05-19,Moody,46101,republican,1643
+1986-05-19,Oglala Lakota,46102,democratic,2709
+1986-05-19,Oglala Lakota,46102,other,318
+1986-05-19,Oglala Lakota,46102,republican,681
 1986-05-19,Pennington,46103,democratic,14449
 1986-05-19,Pennington,46103,other,4026
 1986-05-19,Pennington,46103,republican,22105
@@ -2150,9 +2147,6 @@ date,county,county_fips,party,voters
 1986-05-19,Sanborn,46111,democratic,947
 1986-05-19,Sanborn,46111,other,116
 1986-05-19,Sanborn,46111,republican,1084
-1986-05-19,Shannon,46113,democratic,2709
-1986-05-19,Shannon,46113,other,318
-1986-05-19,Shannon,46113,republican,681
 1986-05-19,Spink,46115,democratic,2581
 1986-05-19,Spink,46115,other,409
 1986-05-19,Spink,46115,republican,2262
@@ -2333,6 +2327,9 @@ date,county,county_fips,party,voters
 1986-11-04,Moody,46101,democratic,2061
 1986-11-04,Moody,46101,other,361
 1986-11-04,Moody,46101,republican,1678
+1986-11-04,Oglala Lakota,46102,democratic,3106
+1986-11-04,Oglala Lakota,46102,other,334
+1986-11-04,Oglala Lakota,46102,republican,699
 1986-11-04,Pennington,46103,democratic,15821
 1986-11-04,Pennington,46103,other,4200
 1986-11-04,Pennington,46103,republican,23200
@@ -2348,9 +2345,6 @@ date,county,county_fips,party,voters
 1986-11-04,Sanborn,46111,democratic,969
 1986-11-04,Sanborn,46111,other,124
 1986-11-04,Sanborn,46111,republican,1076
-1986-11-04,Shannon,46113,democratic,3106
-1986-11-04,Shannon,46113,other,334
-1986-11-04,Shannon,46113,republican,699
 1986-11-04,Spink,46115,democratic,2640
 1986-11-04,Spink,46115,other,437
 1986-11-04,Spink,46115,republican,2305
@@ -2531,6 +2525,9 @@ date,county,county_fips,party,voters
 1988-02-13,Moody,46101,democratic,2007
 1988-02-13,Moody,46101,other,339
 1988-02-13,Moody,46101,republican,1566
+1988-02-13,Oglala Lakota,46102,democratic,2948
+1988-02-13,Oglala Lakota,46102,other,300
+1988-02-13,Oglala Lakota,46102,republican,661
 1988-02-13,Pennington,46103,democratic,15314
 1988-02-13,Pennington,46103,other,3860
 1988-02-13,Pennington,46103,republican,23601
@@ -2546,9 +2543,6 @@ date,county,county_fips,party,voters
 1988-02-13,Sanborn,46111,democratic,954
 1988-02-13,Sanborn,46111,other,103
 1988-02-13,Sanborn,46111,republican,1027
-1988-02-13,Shannon,46113,democratic,2948
-1988-02-13,Shannon,46113,other,300
-1988-02-13,Shannon,46113,republican,661
 1988-02-13,Spink,46115,democratic,2641
 1988-02-13,Spink,46115,other,422
 1988-02-13,Spink,46115,republican,2316
@@ -2729,6 +2723,9 @@ date,county,county_fips,party,voters
 1988-05-13,Moody,46101,democratic,2007
 1988-05-13,Moody,46101,other,339
 1988-05-13,Moody,46101,republican,1566
+1988-05-13,Oglala Lakota,46102,democratic,2980
+1988-05-13,Oglala Lakota,46102,other,305
+1988-05-13,Oglala Lakota,46102,republican,658
 1988-05-13,Pennington,46103,democratic,15619
 1988-05-13,Pennington,46103,other,3931
 1988-05-13,Pennington,46103,republican,24160
@@ -2744,9 +2741,6 @@ date,county,county_fips,party,voters
 1988-05-13,Sanborn,46111,democratic,950
 1988-05-13,Sanborn,46111,other,103
 1988-05-13,Sanborn,46111,republican,1029
-1988-05-13,Shannon,46113,democratic,2980
-1988-05-13,Shannon,46113,other,305
-1988-05-13,Shannon,46113,republican,658
 1988-05-13,Spink,46115,democratic,2731
 1988-05-13,Spink,46115,other,420
 1988-05-13,Spink,46115,republican,2310
@@ -2927,6 +2921,9 @@ date,county,county_fips,party,voters
 1988-10-24,Moody,46101,democratic,2091
 1988-10-24,Moody,46101,other,372
 1988-10-24,Moody,46101,republican,1601
+1988-10-24,Oglala Lakota,46102,democratic,3073
+1988-10-24,Oglala Lakota,46102,other,328
+1988-10-24,Oglala Lakota,46102,republican,679
 1988-10-24,Pennington,46103,democratic,16721
 1988-10-24,Pennington,46103,other,4606
 1988-10-24,Pennington,46103,republican,25982
@@ -2942,9 +2939,6 @@ date,county,county_fips,party,voters
 1988-10-24,Sanborn,46111,democratic,974
 1988-10-24,Sanborn,46111,other,115
 1988-10-24,Sanborn,46111,republican,1022
-1988-10-24,Shannon,46113,democratic,3073
-1988-10-24,Shannon,46113,other,328
-1988-10-24,Shannon,46113,republican,679
 1988-10-24,Spink,46115,democratic,2651
 1988-10-24,Spink,46115,other,415
 1988-10-24,Spink,46115,republican,2265
@@ -3125,6 +3119,9 @@ date,county,county_fips,party,voters
 1990-05-21,Moody,46101,democratic,1953
 1990-05-21,Moody,46101,other,348
 1990-05-21,Moody,46101,republican,1533
+1990-05-21,Oglala Lakota,46102,democratic,2507
+1990-05-21,Oglala Lakota,46102,other,248
+1990-05-21,Oglala Lakota,46102,republican,597
 1990-05-21,Pennington,46103,democratic,14963
 1990-05-21,Pennington,46103,other,3787
 1990-05-21,Pennington,46103,republican,23712
@@ -3140,9 +3137,6 @@ date,county,county_fips,party,voters
 1990-05-21,Sanborn,46111,democratic,882
 1990-05-21,Sanborn,46111,other,108
 1990-05-21,Sanborn,46111,republican,1144
-1990-05-21,Shannon,46113,democratic,2507
-1990-05-21,Shannon,46113,other,248
-1990-05-21,Shannon,46113,republican,597
 1990-05-21,Spink,46115,democratic,2512
 1990-05-21,Spink,46115,other,387
 1990-05-21,Spink,46115,republican,2112
@@ -3323,6 +3317,9 @@ date,county,county_fips,party,voters
 1990-10-22,Moody,46101,democratic,1974
 1990-10-22,Moody,46101,other,357
 1990-10-22,Moody,46101,republican,1532
+1990-10-22,Oglala Lakota,46102,democratic,2936
+1990-10-22,Oglala Lakota,46102,other,476
+1990-10-22,Oglala Lakota,46102,republican,663
 1990-10-22,Pennington,46103,democratic,16252
 1990-10-22,Pennington,46103,other,4470
 1990-10-22,Pennington,46103,republican,24892
@@ -3338,9 +3335,6 @@ date,county,county_fips,party,voters
 1990-10-22,Sanborn,46111,democratic,895
 1990-10-22,Sanborn,46111,other,102
 1990-10-22,Sanborn,46111,republican,1133
-1990-10-22,Shannon,46113,democratic,2936
-1990-10-22,Shannon,46113,other,476
-1990-10-22,Shannon,46113,republican,663
 1990-10-22,Spink,46115,democratic,2543
 1990-10-22,Spink,46115,other,399
 1990-10-22,Spink,46115,republican,2135
@@ -3521,6 +3515,9 @@ date,county,county_fips,party,voters
 1992-02-10,Moody,46101,democratic,1875
 1992-02-10,Moody,46101,other,343
 1992-02-10,Moody,46101,republican,1444
+1992-02-10,Oglala Lakota,46102,democratic,3002
+1992-02-10,Oglala Lakota,46102,other,470
+1992-02-10,Oglala Lakota,46102,republican,667
 1992-02-10,Pennington,46103,democratic,15479
 1992-02-10,Pennington,46103,other,4385
 1992-02-10,Pennington,46103,republican,24271
@@ -3536,9 +3533,6 @@ date,county,county_fips,party,voters
 1992-02-10,Sanborn,46111,democratic,861
 1992-02-10,Sanborn,46111,other,100
 1992-02-10,Sanborn,46111,republican,1110
-1992-02-10,Shannon,46113,democratic,3002
-1992-02-10,Shannon,46113,other,470
-1992-02-10,Shannon,46113,republican,667
 1992-02-10,Spink,46115,democratic,2416
 1992-02-10,Spink,46115,other,359
 1992-02-10,Spink,46115,republican,2004
@@ -3719,6 +3713,9 @@ date,county,county_fips,party,voters
 1992-05-18,Moody,46101,democratic,1898
 1992-05-18,Moody,46101,other,340
 1992-05-18,Moody,46101,republican,1467
+1992-05-18,Oglala Lakota,46102,democratic,3005
+1992-05-18,Oglala Lakota,46102,other,472
+1992-05-18,Oglala Lakota,46102,republican,664
 1992-05-18,Pennington,46103,democratic,15859
 1992-05-18,Pennington,46103,other,4625
 1992-05-18,Pennington,46103,republican,24589
@@ -3734,9 +3731,6 @@ date,county,county_fips,party,voters
 1992-05-18,Sanborn,46111,democratic,872
 1992-05-18,Sanborn,46111,other,133
 1992-05-18,Sanborn,46111,republican,1094
-1992-05-18,Shannon,46113,democratic,3005
-1992-05-18,Shannon,46113,other,472
-1992-05-18,Shannon,46113,republican,664
 1992-05-18,Spink,46115,democratic,2446
 1992-05-18,Spink,46115,other,346
 1992-05-18,Spink,46115,republican,2054
@@ -3917,6 +3911,9 @@ date,county,county_fips,party,voters
 1992-10-19,Moody,46101,democratic,2039
 1992-10-19,Moody,46101,other,408
 1992-10-19,Moody,46101,republican,1543
+1992-10-19,Oglala Lakota,46102,democratic,3142
+1992-10-19,Oglala Lakota,46102,other,582
+1992-10-19,Oglala Lakota,46102,republican,680
 1992-10-19,Pennington,46103,democratic,18340
 1992-10-19,Pennington,46103,other,7060
 1992-10-19,Pennington,46103,republican,27582
@@ -3932,9 +3929,6 @@ date,county,county_fips,party,voters
 1992-10-19,Sanborn,46111,democratic,902
 1992-10-19,Sanborn,46111,other,116
 1992-10-19,Sanborn,46111,republican,1095
-1992-10-19,Shannon,46113,democratic,3142
-1992-10-19,Shannon,46113,other,582
-1992-10-19,Shannon,46113,republican,680
 1992-10-19,Spink,46115,democratic,2577
 1992-10-19,Spink,46115,other,444
 1992-10-19,Spink,46115,republican,2126
@@ -4115,6 +4109,9 @@ date,county,county_fips,party,voters
 1993-08-03,Moody,46101,democratic,1958
 1993-08-03,Moody,46101,other,368
 1993-08-03,Moody,46101,republican,1456
+1993-08-03,Oglala Lakota,46102,democratic,2697
+1993-08-03,Oglala Lakota,46102,other,541
+1993-08-03,Oglala Lakota,46102,republican,514
 1993-08-03,Pennington,46103,democratic,18209
 1993-08-03,Pennington,46103,other,7192
 1993-08-03,Pennington,46103,republican,27620
@@ -4130,9 +4127,6 @@ date,county,county_fips,party,voters
 1993-08-03,Sanborn,46111,democratic,858
 1993-08-03,Sanborn,46111,other,108
 1993-08-03,Sanborn,46111,republican,1054
-1993-08-03,Shannon,46113,democratic,2697
-1993-08-03,Shannon,46113,other,541
-1993-08-03,Shannon,46113,republican,514
 1993-08-03,Spink,46115,democratic,2542
 1993-08-03,Spink,46115,other,447
 1993-08-03,Spink,46115,republican,2104
@@ -4313,6 +4307,9 @@ date,county,county_fips,party,voters
 1994-05-23,Moody,46101,democratic,1930
 1994-05-23,Moody,46101,other,360
 1994-05-23,Moody,46101,republican,1519
+1994-05-23,Oglala Lakota,46102,democratic,2678
+1994-05-23,Oglala Lakota,46102,other,544
+1994-05-23,Oglala Lakota,46102,republican,524
 1994-05-23,Pennington,46103,democratic,16037
 1994-05-23,Pennington,46103,other,6453
 1994-05-23,Pennington,46103,republican,25015
@@ -4328,9 +4325,6 @@ date,county,county_fips,party,voters
 1994-05-23,Sanborn,46111,democratic,869
 1994-05-23,Sanborn,46111,other,80
 1994-05-23,Sanborn,46111,republican,993
-1994-05-23,Shannon,46113,democratic,2678
-1994-05-23,Shannon,46113,other,544
-1994-05-23,Shannon,46113,republican,524
 1994-05-23,Spink,46115,democratic,2346
 1994-05-23,Spink,46115,other,398
 1994-05-23,Spink,46115,republican,2064
@@ -4511,6 +4505,9 @@ date,county,county_fips,party,voters
 1994-11-08,Moody,46101,democratic,1963
 1994-11-08,Moody,46101,other,378
 1994-11-08,Moody,46101,republican,1567
+1994-11-08,Oglala Lakota,46102,democratic,2613
+1994-11-08,Oglala Lakota,46102,other,514
+1994-11-08,Oglala Lakota,46102,republican,461
 1994-11-08,Pennington,46103,democratic,16323
 1994-11-08,Pennington,46103,other,6688
 1994-11-08,Pennington,46103,republican,26093
@@ -4526,9 +4523,6 @@ date,county,county_fips,party,voters
 1994-11-08,Sanborn,46111,democratic,873
 1994-11-08,Sanborn,46111,other,82
 1994-11-08,Sanborn,46111,republican,1014
-1994-11-08,Shannon,46113,democratic,2613
-1994-11-08,Shannon,46113,other,514
-1994-11-08,Shannon,46113,republican,461
 1994-11-08,Spink,46115,democratic,2438
 1994-11-08,Spink,46115,other,417
 1994-11-08,Spink,46115,republican,2152
@@ -4709,6 +4703,9 @@ date,county,county_fips,party,voters
 1996-02-12,Moody,46101,democratic,1926
 1996-02-12,Moody,46101,other,381
 1996-02-12,Moody,46101,republican,1545
+1996-02-12,Oglala Lakota,46102,democratic,3007
+1996-02-12,Oglala Lakota,46102,other,625
+1996-02-12,Oglala Lakota,46102,republican,560
 1996-02-12,Pennington,46103,democratic,15035
 1996-02-12,Pennington,46103,other,6434
 1996-02-12,Pennington,46103,republican,24773
@@ -4724,9 +4721,6 @@ date,county,county_fips,party,voters
 1996-02-12,Sanborn,46111,democratic,831
 1996-02-12,Sanborn,46111,other,87
 1996-02-12,Sanborn,46111,republican,985
-1996-02-12,Shannon,46113,democratic,3007
-1996-02-12,Shannon,46113,other,625
-1996-02-12,Shannon,46113,republican,560
 1996-02-12,Spink,46115,democratic,2385
 1996-02-12,Spink,46115,other,432
 1996-02-12,Spink,46115,republican,2156
@@ -4907,6 +4901,9 @@ date,county,county_fips,party,voters
 1996-05-20,Moody,46101,democratic,1925
 1996-05-20,Moody,46101,other,401
 1996-05-20,Moody,46101,republican,1557
+1996-05-20,Oglala Lakota,46102,democratic,3377
+1996-05-20,Oglala Lakota,46102,other,724
+1996-05-20,Oglala Lakota,46102,republican,590
 1996-05-20,Pennington,46103,democratic,15469
 1996-05-20,Pennington,46103,other,6838
 1996-05-20,Pennington,46103,republican,26051
@@ -4922,9 +4919,6 @@ date,county,county_fips,party,voters
 1996-05-20,Sanborn,46111,democratic,842
 1996-05-20,Sanborn,46111,other,92
 1996-05-20,Sanborn,46111,republican,1001
-1996-05-20,Shannon,46113,democratic,3377
-1996-05-20,Shannon,46113,other,724
-1996-05-20,Shannon,46113,republican,590
 1996-05-20,Spink,46115,democratic,2369
 1996-05-20,Spink,46115,other,436
 1996-05-20,Spink,46115,republican,2219
@@ -5105,6 +5099,9 @@ date,county,county_fips,party,voters
 1996-11-05,Moody,46101,democratic,1973
 1996-11-05,Moody,46101,other,443
 1996-11-05,Moody,46101,republican,1600
+1996-11-05,Oglala Lakota,46102,democratic,3817
+1996-11-05,Oglala Lakota,46102,other,783
+1996-11-05,Oglala Lakota,46102,republican,623
 1996-11-05,Pennington,46103,democratic,16360
 1996-11-05,Pennington,46103,other,7795
 1996-11-05,Pennington,46103,republican,27308
@@ -5120,9 +5117,6 @@ date,county,county_fips,party,voters
 1996-11-05,Sanborn,46111,democratic,861
 1996-11-05,Sanborn,46111,other,95
 1996-11-05,Sanborn,46111,republican,1003
-1996-11-05,Shannon,46113,democratic,3817
-1996-11-05,Shannon,46113,other,783
-1996-11-05,Shannon,46113,republican,623
 1996-11-05,Spink,46115,democratic,2370
 1996-11-05,Spink,46115,other,450
 1996-11-05,Spink,46115,republican,2237
@@ -5303,6 +5297,9 @@ date,county,county_fips,party,voters
 1998-05-18,Moody,46101,democratic,1835
 1998-05-18,Moody,46101,other,421
 1998-05-18,Moody,46101,republican,1492
+1998-05-18,Oglala Lakota,46102,democratic,3494
+1998-05-18,Oglala Lakota,46102,other,652
+1998-05-18,Oglala Lakota,46102,republican,523
 1998-05-18,Pennington,46103,democratic,16137
 1998-05-18,Pennington,46103,other,8125
 1998-05-18,Pennington,46103,republican,26915
@@ -5318,9 +5315,6 @@ date,county,county_fips,party,voters
 1998-05-18,Sanborn,46111,democratic,835
 1998-05-18,Sanborn,46111,other,87
 1998-05-18,Sanborn,46111,republican,984
-1998-05-18,Shannon,46113,democratic,3494
-1998-05-18,Shannon,46113,other,652
-1998-05-18,Shannon,46113,republican,523
 1998-05-18,Spink,46115,democratic,2224
 1998-05-18,Spink,46115,other,430
 1998-05-18,Spink,46115,republican,2159
@@ -5501,6 +5495,9 @@ date,county,county_fips,party,voters
 1998-10-19,Moody,46101,democratic,1893
 1998-10-19,Moody,46101,other,465
 1998-10-19,Moody,46101,republican,1531
+1998-10-19,Oglala Lakota,46102,democratic,3731
+1998-10-19,Oglala Lakota,46102,other,705
+1998-10-19,Oglala Lakota,46102,republican,526
 1998-10-19,Pennington,46103,democratic,16254
 1998-10-19,Pennington,46103,other,8286
 1998-10-19,Pennington,46103,republican,27035
@@ -5516,9 +5513,6 @@ date,county,county_fips,party,voters
 1998-10-19,Sanborn,46111,democratic,830
 1998-10-19,Sanborn,46111,other,85
 1998-10-19,Sanborn,46111,republican,988
-1998-10-19,Shannon,46113,democratic,3731
-1998-10-19,Shannon,46113,other,705
-1998-10-19,Shannon,46113,republican,526
 1998-10-19,Spink,46115,democratic,2253
 1998-10-19,Spink,46115,other,443
 1998-10-19,Spink,46115,republican,2187
@@ -5699,6 +5693,9 @@ date,county,county_fips,party,voters
 2000-05-22,Moody,46101,democratic,1777
 2000-05-22,Moody,46101,other,443
 2000-05-22,Moody,46101,republican,1451
+2000-05-22,Oglala Lakota,46102,democratic,3807
+2000-05-22,Oglala Lakota,46102,other,813
+2000-05-22,Oglala Lakota,46102,republican,540
 2000-05-22,Pennington,46103,democratic,14857
 2000-05-22,Pennington,46103,other,8102
 2000-05-22,Pennington,46103,republican,25254
@@ -5714,9 +5711,6 @@ date,county,county_fips,party,voters
 2000-05-22,Sanborn,46111,democratic,841
 2000-05-22,Sanborn,46111,other,98
 2000-05-22,Sanborn,46111,republican,1011
-2000-05-22,Shannon,46113,democratic,3807
-2000-05-22,Shannon,46113,other,813
-2000-05-22,Shannon,46113,republican,540
 2000-05-22,Spink,46115,democratic,2179
 2000-05-22,Spink,46115,other,447
 2000-05-22,Spink,46115,republican,2082
@@ -5897,6 +5891,9 @@ date,county,county_fips,party,voters
 2000-10-23,Moody,46101,democratic,1900
 2000-10-23,Moody,46101,other,507
 2000-10-23,Moody,46101,republican,1500
+2000-10-23,Oglala Lakota,46102,democratic,3909
+2000-10-23,Oglala Lakota,46102,other,866
+2000-10-23,Oglala Lakota,46102,republican,563
 2000-10-23,Pennington,46103,democratic,16073
 2000-10-23,Pennington,46103,other,9391
 2000-10-23,Pennington,46103,republican,27972
@@ -5912,9 +5909,6 @@ date,county,county_fips,party,voters
 2000-10-23,Sanborn,46111,democratic,852
 2000-10-23,Sanborn,46111,other,108
 2000-10-23,Sanborn,46111,republican,1008
-2000-10-23,Shannon,46113,democratic,3909
-2000-10-23,Shannon,46113,other,866
-2000-10-23,Shannon,46113,republican,563
 2000-10-23,Spink,46115,democratic,2209
 2000-10-23,Spink,46115,other,478
 2000-10-23,Spink,46115,republican,2125
@@ -6095,6 +6089,9 @@ date,county,county_fips,party,voters
 2001-03-26,Moody,46101,democratic,1924
 2001-03-26,Moody,46101,other,527
 2001-03-26,Moody,46101,republican,1515
+2001-03-26,Oglala Lakota,46102,democratic,4006
+2001-03-26,Oglala Lakota,46102,other,905
+2001-03-26,Oglala Lakota,46102,republican,569
 2001-03-26,Pennington,46103,democratic,16275
 2001-03-26,Pennington,46103,other,9628
 2001-03-26,Pennington,46103,republican,28328
@@ -6110,9 +6107,6 @@ date,county,county_fips,party,voters
 2001-03-26,Sanborn,46111,democratic,846
 2001-03-26,Sanborn,46111,other,114
 2001-03-26,Sanborn,46111,republican,1004
-2001-03-26,Shannon,46113,democratic,4006
-2001-03-26,Shannon,46113,other,905
-2001-03-26,Shannon,46113,republican,569
 2001-03-26,Spink,46115,democratic,2203
 2001-03-26,Spink,46115,other,486
 2001-03-26,Spink,46115,republican,2121
@@ -6293,6 +6287,9 @@ date,county,county_fips,party,voters
 2002-05-20,Moody,46101,democratic,2019
 2002-05-20,Moody,46101,other,555
 2002-05-20,Moody,46101,republican,1503
+2002-05-20,Oglala Lakota,46102,democratic,3939
+2002-05-20,Oglala Lakota,46102,other,878
+2002-05-20,Oglala Lakota,46102,republican,544
 2002-05-20,Pennington,46103,democratic,15302
 2002-05-20,Pennington,46103,other,9314
 2002-05-20,Pennington,46103,republican,27210
@@ -6308,9 +6305,6 @@ date,county,county_fips,party,voters
 2002-05-20,Sanborn,46111,democratic,827
 2002-05-20,Sanborn,46111,other,110
 2002-05-20,Sanborn,46111,republican,985
-2002-05-20,Shannon,46113,democratic,3939
-2002-05-20,Shannon,46113,other,878
-2002-05-20,Shannon,46113,republican,544
 2002-05-20,Spink,46115,democratic,2028
 2002-05-20,Spink,46115,other,443
 2002-05-20,Spink,46115,republican,2015
@@ -6491,6 +6485,9 @@ date,county,county_fips,party,voters
 2002-10-21,Moody,46101,democratic,2119
 2002-10-21,Moody,46101,other,585
 2002-10-21,Moody,46101,republican,1544
+2002-10-21,Oglala Lakota,46102,democratic,5556
+2002-10-21,Oglala Lakota,46102,other,929
+2002-10-21,Oglala Lakota,46102,republican,505
 2002-10-21,Pennington,46103,democratic,16383
 2002-10-21,Pennington,46103,other,10378
 2002-10-21,Pennington,46103,republican,28538
@@ -6506,9 +6503,6 @@ date,county,county_fips,party,voters
 2002-10-21,Sanborn,46111,democratic,850
 2002-10-21,Sanborn,46111,other,113
 2002-10-21,Sanborn,46111,republican,1011
-2002-10-21,Shannon,46113,democratic,5556
-2002-10-21,Shannon,46113,other,929
-2002-10-21,Shannon,46113,republican,505
 2002-10-21,Spink,46115,democratic,2085
 2002-10-21,Spink,46115,other,448
 2002-10-21,Spink,46115,republican,2101
@@ -6689,6 +6683,9 @@ date,county,county_fips,party,voters
 2004-05-17,Moody,46101,democratic,2085
 2004-05-17,Moody,46101,other,610
 2004-05-17,Moody,46101,republican,1521
+2004-05-17,Oglala Lakota,46102,democratic,5553
+2004-05-17,Oglala Lakota,46102,other,483
+2004-05-17,Oglala Lakota,46102,republican,488
 2004-05-17,Pennington,46103,democratic,15556
 2004-05-17,Pennington,46103,other,9960
 2004-05-17,Pennington,46103,republican,27508
@@ -6704,9 +6701,6 @@ date,county,county_fips,party,voters
 2004-05-17,Sanborn,46111,democratic,814
 2004-05-17,Sanborn,46111,other,118
 2004-05-17,Sanborn,46111,republican,948
-2004-05-17,Shannon,46113,democratic,5553
-2004-05-17,Shannon,46113,other,483
-2004-05-17,Shannon,46113,republican,488
 2004-05-17,Spink,46115,democratic,2025
 2004-05-17,Spink,46115,other,443
 2004-05-17,Spink,46115,republican,2085
@@ -6887,6 +6881,9 @@ date,county,county_fips,party,voters
 2004-10-18,Moody,46101,democratic,2190
 2004-10-18,Moody,46101,other,666
 2004-10-18,Moody,46101,republican,1612
+2004-10-18,Oglala Lakota,46102,democratic,6223
+2004-10-18,Oglala Lakota,46102,other,1173
+2004-10-18,Oglala Lakota,46102,republican,588
 2004-10-18,Pennington,46103,democratic,16735
 2004-10-18,Pennington,46103,other,11149
 2004-10-18,Pennington,46103,republican,29530
@@ -6902,9 +6899,6 @@ date,county,county_fips,party,voters
 2004-10-18,Sanborn,46111,democratic,825
 2004-10-18,Sanborn,46111,other,130
 2004-10-18,Sanborn,46111,republican,964
-2004-10-18,Shannon,46113,democratic,6223
-2004-10-18,Shannon,46113,other,1173
-2004-10-18,Shannon,46113,republican,588
 2004-10-18,Spink,46115,democratic,2071
 2004-10-18,Spink,46115,other,488
 2004-10-18,Spink,46115,republican,2157
@@ -7085,6 +7079,9 @@ date,county,county_fips,party,voters
 2006-05-22,Moody,46101,democratic,2251
 2006-05-22,Moody,46101,other,637
 2006-05-22,Moody,46101,republican,1521
+2006-05-22,Oglala Lakota,46102,democratic,5900
+2006-05-22,Oglala Lakota,46102,other,1187
+2006-05-22,Oglala Lakota,46102,republican,635
 2006-05-22,Pennington,46103,democratic,16048
 2006-05-22,Pennington,46103,other,10528
 2006-05-22,Pennington,46103,republican,29357
@@ -7100,9 +7097,6 @@ date,county,county_fips,party,voters
 2006-05-22,Sanborn,46111,democratic,771
 2006-05-22,Sanborn,46111,other,129
 2006-05-22,Sanborn,46111,republican,921
-2006-05-22,Shannon,46113,democratic,5900
-2006-05-22,Shannon,46113,other,1187
-2006-05-22,Shannon,46113,republican,635
 2006-05-22,Spink,46115,democratic,2072
 2006-05-22,Spink,46115,other,516
 2006-05-22,Spink,46115,republican,2261
@@ -7283,6 +7277,9 @@ date,county,county_fips,party,voters
 2006-10-23,Moody,46101,democratic,2296
 2006-10-23,Moody,46101,other,672
 2006-10-23,Moody,46101,republican,1570
+2006-10-23,Oglala Lakota,46102,democratic,5915
+2006-10-23,Oglala Lakota,46102,other,1221
+2006-10-23,Oglala Lakota,46102,republican,710
 2006-10-23,Pennington,46103,democratic,16724
 2006-10-23,Pennington,46103,other,11239
 2006-10-23,Pennington,46103,republican,30180
@@ -7298,9 +7295,6 @@ date,county,county_fips,party,voters
 2006-10-23,Sanborn,46111,democratic,773
 2006-10-23,Sanborn,46111,other,134
 2006-10-23,Sanborn,46111,republican,934
-2006-10-23,Shannon,46113,democratic,5915
-2006-10-23,Shannon,46113,other,1221
-2006-10-23,Shannon,46113,republican,710
 2006-10-23,Spink,46115,democratic,1988
 2006-10-23,Spink,46115,other,476
 2006-10-23,Spink,46115,republican,2198
@@ -7481,6 +7475,9 @@ date,county,county_fips,party,voters
 2008-05-19,Moody,46101,democratic,2168
 2008-05-19,Moody,46101,other,681
 2008-05-19,Moody,46101,republican,1503
+2008-05-19,Oglala Lakota,46102,democratic,5948
+2008-05-19,Oglala Lakota,46102,other,1133
+2008-05-19,Oglala Lakota,46102,republican,670
 2008-05-19,Pennington,46103,democratic,18067
 2008-05-19,Pennington,46103,other,11448
 2008-05-19,Pennington,46103,republican,30334
@@ -7496,9 +7493,6 @@ date,county,county_fips,party,voters
 2008-05-19,Sanborn,46111,democratic,767
 2008-05-19,Sanborn,46111,other,127
 2008-05-19,Sanborn,46111,republican,905
-2008-05-19,Shannon,46113,democratic,5948
-2008-05-19,Shannon,46113,other,1133
-2008-05-19,Shannon,46113,republican,670
 2008-05-19,Spink,46115,democratic,1949
 2008-05-19,Spink,46115,other,475
 2008-05-19,Spink,46115,republican,2090
@@ -7679,6 +7673,9 @@ date,county,county_fips,party,voters
 2008-11-04,Moody,46101,democratic,2230
 2008-11-04,Moody,46101,other,718
 2008-11-04,Moody,46101,republican,1501
+2008-11-04,Oglala Lakota,46102,democratic,6256
+2008-11-04,Oglala Lakota,46102,other,1129
+2008-11-04,Oglala Lakota,46102,republican,657
 2008-11-04,Pennington,46103,democratic,19220
 2008-11-04,Pennington,46103,other,12321
 2008-11-04,Pennington,46103,republican,31198
@@ -7694,9 +7691,6 @@ date,county,county_fips,party,voters
 2008-11-04,Sanborn,46111,democratic,774
 2008-11-04,Sanborn,46111,other,127
 2008-11-04,Sanborn,46111,republican,909
-2008-11-04,Shannon,46113,democratic,6256
-2008-11-04,Shannon,46113,other,1129
-2008-11-04,Shannon,46113,republican,657
 2008-11-04,Spink,46115,democratic,1988
 2008-11-04,Spink,46115,other,497
 2008-11-04,Spink,46115,republican,2101
@@ -7877,6 +7871,9 @@ date,county,county_fips,party,voters
 2010-05-24,Moody,46101,democratic,2084
 2010-05-24,Moody,46101,other,728
 2010-05-24,Moody,46101,republican,1493
+2010-05-24,Oglala Lakota,46102,democratic,5760
+2010-05-24,Oglala Lakota,46102,other,1092
+2010-05-24,Oglala Lakota,46102,republican,578
 2010-05-24,Pennington,46103,democratic,18863
 2010-05-24,Pennington,46103,other,12396
 2010-05-24,Pennington,46103,republican,31132
@@ -7892,9 +7889,6 @@ date,county,county_fips,party,voters
 2010-05-24,Sanborn,46111,democratic,726
 2010-05-24,Sanborn,46111,other,126
 2010-05-24,Sanborn,46111,republican,836
-2010-05-24,Shannon,46113,democratic,5760
-2010-05-24,Shannon,46113,other,1092
-2010-05-24,Shannon,46113,republican,578
 2010-05-24,Spink,46115,democratic,1796
 2010-05-24,Spink,46115,other,483
 2010-05-24,Spink,46115,republican,2123
@@ -8075,6 +8069,9 @@ date,county,county_fips,party,voters
 2010-10-18,Moody,46101,democratic,2066
 2010-10-18,Moody,46101,other,745
 2010-10-18,Moody,46101,republican,1499
+2010-10-18,Oglala Lakota,46102,democratic,5813
+2010-10-18,Oglala Lakota,46102,other,1146
+2010-10-18,Oglala Lakota,46102,republican,571
 2010-10-18,Pennington,46103,democratic,18791
 2010-10-18,Pennington,46103,other,12855
 2010-10-18,Pennington,46103,republican,31467
@@ -8090,9 +8087,6 @@ date,county,county_fips,party,voters
 2010-10-18,Sanborn,46111,democratic,730
 2010-10-18,Sanborn,46111,other,138
 2010-10-18,Sanborn,46111,republican,840
-2010-10-18,Shannon,46113,democratic,5813
-2010-10-18,Shannon,46113,other,1146
-2010-10-18,Shannon,46113,republican,571
 2010-10-18,Spink,46115,democratic,1794
 2010-10-18,Spink,46115,other,490
 2010-10-18,Spink,46115,republican,2118
@@ -8273,6 +8267,9 @@ date,county,county_fips,party,voters
 2012-06-04,Moody,46101,democratic,1879
 2012-06-04,Moody,46101,other,743
 2012-06-04,Moody,46101,republican,1434
+2012-06-04,Oglala Lakota,46102,democratic,5695
+2012-06-04,Oglala Lakota,46102,other,1187
+2012-06-04,Oglala Lakota,46102,republican,563
 2012-06-04,Pennington,46103,democratic,17647
 2012-06-04,Pennington,46103,other,13037
 2012-06-04,Pennington,46103,republican,30951
@@ -8288,9 +8285,6 @@ date,county,county_fips,party,voters
 2012-06-04,Sanborn,46111,democratic,676
 2012-06-04,Sanborn,46111,other,140
 2012-06-04,Sanborn,46111,republican,818
-2012-06-04,Shannon,46113,democratic,5695
-2012-06-04,Shannon,46113,other,1187
-2012-06-04,Shannon,46113,republican,563
 2012-06-04,Spink,46115,democratic,1771
 2012-06-04,Spink,46115,other,518
 2012-06-04,Spink,46115,republican,1988
@@ -8471,6 +8465,9 @@ date,county,county_fips,party,voters
 2012-11-06,Moody,46101,democratic,1897
 2012-11-06,Moody,46101,other,801
 2012-11-06,Moody,46101,republican,1478
+2012-11-06,Oglala Lakota,46102,democratic,5930
+2012-11-06,Oglala Lakota,46102,other,1265
+2012-11-06,Oglala Lakota,46102,republican,583
 2012-11-06,Pennington,46103,democratic,18104
 2012-11-06,Pennington,46103,other,14041
 2012-11-06,Pennington,46103,republican,32123
@@ -8486,9 +8483,6 @@ date,county,county_fips,party,voters
 2012-11-06,Sanborn,46111,democratic,661
 2012-11-06,Sanborn,46111,other,149
 2012-11-06,Sanborn,46111,republican,832
-2012-11-06,Shannon,46113,democratic,5930
-2012-11-06,Shannon,46113,other,1265
-2012-11-06,Shannon,46113,republican,583
 2012-11-06,Spink,46115,democratic,1732
 2012-11-06,Spink,46115,other,556
 2012-11-06,Spink,46115,republican,2030
@@ -8669,6 +8663,9 @@ date,county,county_fips,party,voters
 2014-06-03,Moody,46101,democratic,1779
 2014-06-03,Moody,46101,other,830
 2014-06-03,Moody,46101,republican,1440
+2014-06-03,Oglala Lakota,46102,democratic,5814
+2014-06-03,Oglala Lakota,46102,other,1348
+2014-06-03,Oglala Lakota,46102,republican,7740
 2014-06-03,Pennington,46103,democratic,16742
 2014-06-03,Pennington,46103,other,14618
 2014-06-03,Pennington,46103,republican,31283
@@ -8684,9 +8681,6 @@ date,county,county_fips,party,voters
 2014-06-03,Sanborn,46111,democratic,614
 2014-06-03,Sanborn,46111,other,156
 2014-06-03,Sanborn,46111,republican,1560
-2014-06-03,Shannon,46113,democratic,5814
-2014-06-03,Shannon,46113,other,1348
-2014-06-03,Shannon,46113,republican,7740
 2014-06-03,Spink,46115,democratic,1618
 2014-06-03,Spink,46115,other,577
 2014-06-03,Spink,46115,republican,4173
@@ -8867,6 +8861,9 @@ date,county,county_fips,party,voters
 2014-11-04,Moody,46101,democratic,1793
 2014-11-04,Moody,46101,other,848
 2014-11-04,Moody,46101,republican,1466
+2014-11-04,Oglala Lakota,46102,democratic,6051
+2014-11-04,Oglala Lakota,46102,other,1548
+2014-11-04,Oglala Lakota,46102,republican,591
 2014-11-04,Pennington,46103,democratic,16875
 2014-11-04,Pennington,46103,other,15374
 2014-11-04,Pennington,46103,republican,32160
@@ -8882,9 +8879,6 @@ date,county,county_fips,party,voters
 2014-11-04,Sanborn,46111,democratic,597
 2014-11-04,Sanborn,46111,other,166
 2014-11-04,Sanborn,46111,republican,787
-2014-11-04,Shannon,46113,democratic,6051
-2014-11-04,Shannon,46113,other,1548
-2014-11-04,Shannon,46113,republican,591
 2014-11-04,Spink,46115,democratic,1625
 2014-11-04,Spink,46115,other,599
 2014-11-04,Spink,46115,republican,1995
