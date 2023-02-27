@@ -11,10 +11,4 @@ The data -- 143 snapshots in time -- comes from the South Dakota Secretary of St
 
 Files are named after the snapshot date in `YYYY-MM-DD.*` format. Individual CSV files live in the [`data`](data) folder. The original PDFs, some of them rendered from web pages, live in the [`pdfs`](pdfs) folder.
 
-The [`build_files.py`](build_files.py) script creates a (tidy) combined file with a new column, `county_fips`: [`sd-voter-registration-data.csv`](sd-voter-registration-data.csv).
-
-I used a combination of [Tabula](https://tabula.technology/), hand-entry and [some of the tools mentioned in this repo](https://github.com/chadday/nicar_ocr) to extract the data from the PDFs.
-
-### Notes
-- N.B. Column headers in the source files change quite a bit over the years!
-- Some snapshot files include totals for `inactive` registrants ([example](https://github.com/cjwinchester/sd-voter-registration-data/blob/main/data/2021-04-01.csv)), which would need to be filtered out for any analyses of active voters
+The [`build_file.py`](build_file.py) script creates a (tidy) combined file with a new column, `county_fips`: [`sd-voter-registration-data.csv`](sd-voter-registration-data.csv). The columns in this file are `date,county,county_fips,party,voters` -- note that _inactive_ is sometimes the "party" name, so if your goal is to analyze active voter registration, you'd need to filter these out first.
