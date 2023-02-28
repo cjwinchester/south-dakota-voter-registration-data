@@ -1,5 +1,11 @@
 import csv
+import json
 import glob
+
+
+def get_elex_lookup():
+    with open('elex-lookup.json', 'r') as infile:
+        return json.load(infile)
 
 
 def get_fips_lookup():
@@ -25,7 +31,8 @@ def get_fips_lookup():
 
 def build_files():
 
-    lookup = get_fips_lookup()
+    lookup_fips = get_fips_lookup()
+    lookup_elex = get_elex_lookup()
 
     data_filepath = 'sd-voter-registration-data.csv'
     data_filepath_simplified = 'sd-voter-registration-data-simplified.csv'
@@ -36,13 +43,16 @@ def build_files():
     data_out_simplified = {}
 
     for file in files:
+
+        elex = lookup_elex.get(file.split('/')[-1].split('.')[0])
+        
         with open(file, 'r') as infile:
             reader = csv.DictReader(infile)
 
             for row in reader:
                 date = row.get('date')
                 county = row.get('county')
-                fips = lookup[county]
+                fips = lookup_fips[county]
 
                 if not data_out_simplified.get(date):
                     data_out_simplified[date] = {}
@@ -51,6 +61,7 @@ def build_files():
 
                     data_out_simplified[date][fips] = {
                         'county': county,
+                        'election': elex,
                         'republican': 0,
                         'democratic': 0,
                         'other': 0
@@ -67,7 +78,8 @@ def build_files():
                             'county': county,
                             'county_fips': fips,
                             'party': header,
-                            'voters': votes
+                            'voters': votes,
+                            'election': elex
                         })
 
                         # simplified file doesn't need inactive records
@@ -110,6 +122,7 @@ def build_files():
         for fips in fips_codes:
             rec = fips_codes[fips]
             county = rec.get('county')
+            elex = rec.get('election')
 
             # skip Washabaugh records
             if county == 'Washabaugh':
@@ -122,13 +135,14 @@ def build_files():
 
             for header in list(rec.keys()):
 
-                if header != 'county':
+                if header not in ['county', 'election']:
                     data_out_simplified_records.append({
                         'date': date,
                         'county': county,
                         'county_fips': fips,
                         'party': header,
-                        'voters': int(rec.get(header))
+                        'voters': int(rec.get(header)),
+                        'election': elex
                     })
 
     data_out_simplified_sorted = sorted(
