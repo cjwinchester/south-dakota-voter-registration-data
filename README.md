@@ -1,7 +1,7 @@
 # South Dakota voter registration data
 This repository contains county-level voter registration data for South Dakota, broken down by party.
 
-_Updated August 7, 2023_
+_Updated Dec. 10, 2023_
 
 The data -- 144 snapshots in time -- comes from the South Dakota Secretary of State's website:
 - [December 2015 to present](https://sdsos.gov/elections-voting/upcoming-elections/voter-registration-totals/voter-registration-by-county.aspx): Monthly snapshots, plus election totals
