@@ -42,6 +42,8 @@ def build_files():
     data_out = []
     data_out_simplified = {}
 
+    parties = set()
+
     for file in files:
 
         elex = lookup_elex.get(file.split('/')[-1].split('.')[0])
@@ -72,6 +74,8 @@ def build_files():
 
                         votes = row.get(header) or 0
                         votes = int(votes)
+
+                        parties.add(header)
 
                         data_out.append({
                             'date': date,
@@ -111,6 +115,8 @@ def build_files():
 
         writer.writeheader()
         writer.writerows(data_sorted)
+
+    print(f'Party list: {", ".join(sorted(parties))}\n{"-"*20}')
 
     print(f'Wrote {data_filepath}')
 
