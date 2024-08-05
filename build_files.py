@@ -1,6 +1,8 @@
 import csv
 import json
 import glob
+from datetime import date
+import os
 
 
 def get_elex_lookup():
@@ -52,16 +54,16 @@ def build_files():
             reader = csv.DictReader(infile)
 
             for row in reader:
-                date = row.get('date')
+                snapshot_date = row.get('date')
                 county = row.get('county')
                 fips = lookup_fips[county]
 
-                if not data_out_simplified.get(date):
-                    data_out_simplified[date] = {}
+                if not data_out_simplified.get(snapshot_date):
+                    data_out_simplified[snapshot_date] = {}
 
-                if not data_out_simplified.get(date).get(fips):
+                if not data_out_simplified.get(snapshot_date).get(fips):
 
-                    data_out_simplified[date][fips] = {
+                    data_out_simplified[snapshot_date][fips] = {
                         'county': county,
                         'election': elex,
                         'republican': 0,
@@ -78,7 +80,7 @@ def build_files():
                         parties.add(header)
 
                         data_out.append({
-                            'date': date,
+                            'date': snapshot_date,
                             'county': county,
                             'county_fips': fips,
                             'party': header,
@@ -94,7 +96,7 @@ def build_files():
                         if header not in ['republican', 'democratic']:
                             header = 'other'
 
-                        data_out_simplified[date][fips][header] += votes
+                        data_out_simplified[snapshot_date][fips][header] += votes
 
                 row['county_fips'] = fips
 
@@ -122,8 +124,8 @@ def build_files():
 
     data_out_simplified_records = []
 
-    for date in data_out_simplified:
-        fips_codes = data_out_simplified[date]
+    for snapshot_date in data_out_simplified:
+        fips_codes = data_out_simplified[snapshot_date]
 
         for fips in fips_codes:
             rec = fips_codes[fips]
@@ -143,7 +145,7 @@ def build_files():
 
                 if header not in ['county', 'election']:
                     data_out_simplified_records.append({
-                        'date': date,
+                        'date': snapshot_date,
                         'county': county,
                         'county_fips': fips,
                         'party': header,
@@ -171,6 +173,20 @@ def build_files():
         writer.writerows(data_out_simplified_sorted)
 
     print(f'Wrote {data_filepath_simplified}')
+
+    # update readme
+    with open('README-template.md', 'r') as infile:
+        content = infile.read()
+
+    updated = date.today().strftime('%B %-d, %Y')
+    snapshot_count = len([x for x in os.listdir('data') if x.endswith('.csv')])
+
+    content = content.replace('{% updated %}', updated).replace('{% snapshot_count %}', str(snapshot_count))
+    
+    with open('README.md', 'w') as outfile:
+        outfile.write(content)
+
+    print('Wrote README.md')
 
 
 if __name__ == '__main__':
