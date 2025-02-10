@@ -1,0 +1,20 @@
+name: Check for new reports
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-python@main
+      with:
+        python-version: '3.12'
+    - run: pip install -r requirements.txt
+    - name: Run check script
+      env:
+        SLACK_HOOK_STATE_ELECTIONS: ${{ secrets.SLACK_HOOK_STATE_ELECTIONS }}
+      run: python check.py
