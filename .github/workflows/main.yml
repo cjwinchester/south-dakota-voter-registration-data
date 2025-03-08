@@ -8,6 +8,7 @@ on:
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    environment: checker script env
     steps:
     - uses: actions/checkout@main
     - uses: actions/setup-python@main
