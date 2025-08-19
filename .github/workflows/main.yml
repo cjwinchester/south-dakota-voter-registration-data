@@ -9,13 +9,20 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     environment: checker script env
+
     steps:
-    - uses: actions/checkout@main
-    - uses: actions/setup-python@main
-      with:
-        python-version: '3.12'
-    - run: pip install -r requirements.txt
-    - name: Run check script
-      env:
-        SLACK_HOOK_STATE_ELECTIONS: ${{ secrets.SLACK_HOOK_STATE_ELECTIONS }}
-      run: python check.py
+      - uses: actions/checkout@main
+
+      - uses: actions/setup-python@main
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+    
+      - run: uv sync --locked --all-extras --dev
+
+      - name: Run check script
+        env:
+          SLACK_HOOK_STATE_ELECTIONS: ${{ secrets.SLACK_HOOK_STATE_ELECTIONS }}
+        run: uv run python check.py
