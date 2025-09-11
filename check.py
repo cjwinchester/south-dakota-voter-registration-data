@@ -6,12 +6,15 @@ from pathlib import Path
 from datetime import datetime
 
 import requests
+from requests.adapters import HTTPAdapter, Retry
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from slack_sdk.webhook import WebhookClient
 
 
+
 URL = 'https://sdsos.gov/elections-voting/upcoming-elections/voter-registration-totals/voter-registration-by-county.aspx'
+
 webhook = WebhookClient(
     os.environ.get('SLACK_HOOK_STATE_ELECTIONS')
 )
@@ -21,11 +24,18 @@ def check_for_new_reports():
 
     dates_completed = [datetime.fromisoformat(x.stem).date() for x in Path('data').glob('*.csv')]
 
-    r = requests.get(
+    s = requests.Session()
+
+    retries = Retry(total=5, backoff_factor=1)
+
+    s.mount('https://', HTTPAdapter(max_retries=retries))
+
+    r = s.get(
         URL,
         headers={
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:134.0) Gecko/20100101 Firefox/134.0'
-        }
+        },
+        timeout=500
     )
 
     r.raise_for_status()
@@ -70,8 +80,13 @@ def check_for_new_reports():
     if not new_reports:
         return []
 
+    """
+    
     response = webhook.send(
-        text=f'New voter registration data: {" | ".join([x.get("url") for x in new_reports])}',
+        # text=f'New voter registration data: {" | ".join([x.get("url") for x in new_reports])}',
+        text=f'Check for new voter registration data: {URL}'
+        """
+        ,
         blocks=[
             {
                 "type": "header",
@@ -94,7 +109,7 @@ def check_for_new_reports():
     
     time.sleep(1)
 
-    return new_reports
+    return response
 
 
 if __name__ == '__main__':

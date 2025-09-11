@@ -1,9 +1,9 @@
 [project]
 name = "south-dakota-voter-registration-data"
 version = "0.1.0"
-description = "Add your description here"
+description = "Tracking monthly voter registration snapshots in South Dakota."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "bs4>=0.0.2",
     "jupyterlab>=4.4.6",
