@@ -55,15 +55,6 @@
         height: auto;
       }
 
-      /* map is hidden behind a toggle button until the layout switches to the
-         fixed sidebar (the lg breakpoint) - below that the sidebar spans the
-         full width and the inline map would otherwise take over the page */
-      @media (max-width: 1023.98px) {
-        .map-collapsed {
-          display: none;
-        }
-      }
-
       .county-shape {
         fill: #dbeafe;
         stroke: #1e293b;
@@ -94,7 +85,13 @@
 
       .chart-shell {
         position: relative;
-        height: clamp(360px, 62vh, 640px);
+        height: clamp(280px, 45vh, 420px);
+      }
+
+      @media (min-width: 1024px) {
+        .chart-shell {
+          height: clamp(360px, 62vh, 640px);
+        }
       }
 
       /* ---- reduced motion ---- */
@@ -176,19 +173,7 @@
 
             <h2 id="map-heading" class="sr-only">South Dakota county map</h2>
 
-            <button
-              id="toggle-map-button"
-              type="button"
-              aria-expanded="false"
-              aria-controls="county-map"
-              class="mb-10 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-blue-100 lg:hidden"
-            >
-              <span id="toggle-map-button-label">Show map</span>
-            </button>
-
-            <div id="map-wrapper" class="map-collapsed">
-              <div id="county-map" class="w-full"></div>
-            </div>
+            <div id="county-map" class="hidden w-full lg:block"></div>
           </section>
 
           <section class="hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm text-sm text-slate-600 lg:block">
@@ -388,9 +373,6 @@
       const figuresTableBody = document.getElementById('figures-table-body');
       const countyMap = document.getElementById('county-map');
       const resetButton = document.getElementById('reset-button');
-      const mapWrapper = document.getElementById('map-wrapper');
-      const toggleMapButton = document.getElementById('toggle-map-button');
-      const toggleMapButtonLabel = document.getElementById('toggle-map-button-label');
       const modeCountButton = document.getElementById('mode-count-button');
       const modePercentButton = document.getElementById('mode-percent-button');
 
@@ -823,12 +805,6 @@
         clearInputButton.hidden = true;
         closeListbox();
         selectCounty(null);
-      });
-
-      toggleMapButton.addEventListener('click', () => {
-        const isOpen = mapWrapper.classList.toggle('map-collapsed') === false;
-        toggleMapButton.setAttribute('aria-expanded', String(isOpen));
-        toggleMapButtonLabel.textContent = isOpen ? 'Hide map' : 'Show map';
       });
 
       async function initialize() {
