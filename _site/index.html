@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>South Dakota Voter Registration Trends</title>
+    <meta
+      name="description"
+      content="A chart showing voter registration trends, by county and party, in South Dakota, since 1976."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        background: #f8fafc;
+      }
+
+      /* ---- county search combobox ---- */
+
+      #county-listbox {
+        display: none;
+      }
+
+      #county-listbox.is-open {
+        display: block;
+      }
+
+      .county-option {
+        cursor: pointer;
+      }
+
+      .county-option[aria-selected='true'] {
+        background: #dbeafe;
+        color: #1e3a8a;
+      }
+
+      .county-option:hover {
+        background: #eff6ff;
+      }
+
+      /* ---- inline wayfinder map ---- */
+
+      #county-map {
+        max-width: 22rem;
+        margin-inline: auto;
+      }
+
+      #county-map svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* map is hidden behind a toggle button until the layout switches to the
+         fixed sidebar (the lg breakpoint) - below that the sidebar spans the
+         full width and the inline map would otherwise take over the page */
+      @media (max-width: 1023.98px) {
+        .map-collapsed {
+          display: none;
+        }
+      }
+
+      .county-shape {
+        fill: #dbeafe;
+        stroke: #1e293b;
+        stroke-width: 130;
+        cursor: pointer;
+      }
+
+      .county-shape:hover,
+      .county-shape:focus-visible {
+        fill: #93c5fd;
+        stroke: #0f172a;
+        stroke-width: 260;
+        outline: none;
+      }
+
+      .county-shape.is-selected {
+        fill: #f59e0b;
+        stroke: #78350f;
+        stroke-width: 260;
+      }
+
+      .county-shape.is-selected:hover,
+      .county-shape.is-selected:focus-visible {
+        fill: #d97706;
+      }
+
+      /* ---- chart + figures table ---- */
+
+      .chart-shell {
+        position: relative;
+        height: clamp(360px, 62vh, 640px);
+      }
+
+      /* ---- reduced motion ---- */
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900 focus:shadow-lg"
+      >Skip to main content</a
+    >
+
+    <main id="main-content" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <header class="mb-8">
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          South Dakota voter registration trends
+        </h1>
+      </header>
+
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-start">
+        <aside class="flex flex-col gap-6 lg:sticky lg:top-6">
+          <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="search-heading">
+            <h2 id="search-heading" class="text-sm font-semibold text-slate-800">Find a county</h2>
+
+            <div class="relative mt-3 mb-5">
+              <label for="county-input" class="sr-only">Search for a county</label>
+              <div class="flex gap-2">
+                <div class="relative flex-1">
+                  <input
+                    id="county-input"
+                    type="text"
+                    role="combobox"
+                    autocomplete="off"
+                    aria-expanded="false"
+                    aria-controls="county-listbox"
+                    aria-autocomplete="list"
+                    aria-describedby="county-help"
+                    placeholder="Search counties&hellip;"
+                    class="block w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-3 pr-9 text-base text-slate-900 shadow-sm placeholder:text-slate-500 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100"
+                  />
+                  <button
+                    id="clear-input-button"
+                    type="button"
+                    hidden
+                    aria-label="Clear county search"
+                    class="absolute inset-y-0 right-0 flex w-9 items-center justify-center text-slate-500 hover:text-slate-800 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded-r-xl"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+                      <path
+                        d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <button
+                  id="reset-button"
+                  type="button"
+                  class="shrink-0 rounded-xl border border-slate-300 bg-slate-100 px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-200 focus:outline-none focus:ring-4 focus:ring-slate-200"
+                >
+                  Statewide
+                </button>
+              </div>
+
+              <ul
+                id="county-listbox"
+                role="listbox"
+                aria-label="Matching counties"
+                class="absolute z-10 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-lg"
+              ></ul>
+            </div>
+
+            <h2 id="map-heading" class="sr-only">South Dakota county map</h2>
+
+            <button
+              id="toggle-map-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="county-map"
+              class="mb-10 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-blue-100 lg:hidden"
+            >
+              <span id="toggle-map-button-label">Show map</span>
+            </button>
+
+            <div id="map-wrapper" class="map-collapsed">
+              <div id="county-map" class="w-full"></div>
+            </div>
+          </section>
+
+          <section class="hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm text-sm text-slate-600 lg:block">
+            <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Notes &amp; sources</h2>
+            <p class="mt-2">
+              Snapshot totals come from South Dakota Secretary of State voter registration reports.
+              &ldquo;Other&rdquo; combines Libertarian, independent, no-party-affiliation and all remaining
+              categories aside from Republican and Democratic; inactive registrations are excluded.
+            </p>
+            <p class="mt-3">
+              <a
+                href="https://github.com/cjwinchester/south-dakota-voter-registration-data"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900 hover:decoration-blue-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded"
+              >
+                Source code &amp; data on GitHub
+                <span class="sr-only">(opens in a new tab)</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                  <path
+                    d="M11 3a1 1 0 1 0 0 2h2.586L8.293 10.293a1 1 0 0 0 1.414 1.414L15 6.414V9a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-5Z"
+                  />
+                  <path
+                    d="M5 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3a1 1 0 1 0-2 0v3H5V7h3a1 1 0 0 0 0-2H5Z"
+                  />
+                </svg>
+              </a>
+            </p>
+            <p class="mt-2">
+              <a
+                href="https://raw.githubusercontent.com/cjwinchester/south-dakota-voter-registration-data/refs/heads/main/sd-voter-registration-data-simplified.csv"
+                class="inline-flex items-center gap-1 font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900 hover:decoration-blue-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded"
+              >
+                Download the underlying CSV
+                <svg viewBox="0 0 20 20" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                  <path
+                    d="M10 12.5a.75.75 0 0 0 .53-.22l3.25-3.25a.75.75 0 0 0-1.06-1.06L10.75 9.94V3a.75.75 0 0 0-1.5 0v6.94L7.28 7.97a.75.75 0 0 0-1.06 1.06l3.25 3.25c.14.14.331.22.53.22Z"
+                  />
+                  <path
+                    d="M4.75 12.5a.75.75 0 0 0-1.5 0v2.5A2.25 2.25 0 0 0 5.5 17.25h9A2.25 2.25 0 0 0 16.75 15v-2.5a.75.75 0 0 0-1.5 0V15a.75.75 0 0 1-.75.75h-9a.75.75 0 0 1-.75-.75v-2.5Z"
+                  />
+                </svg>
+              </a>
+            </p>
+          </section>
+        </aside>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="chart-heading">
+          <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 id="chart-heading" aria-live="polite" class="text-xl font-bold text-slate-900">
+              Statewide
+            </h2>
+
+            <div
+              role="group"
+              aria-label="Chart display mode"
+              class="inline-flex shrink-0 self-start rounded-lg border border-slate-300 bg-slate-100 p-0.5 sm:self-auto"
+            >
+              <button
+                id="mode-count-button"
+                type="button"
+                aria-pressed="true"
+                class="rounded-md bg-white px-3 py-1.5 text-sm font-medium text-slate-900 shadow-sm transition focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+              >
+                Count
+              </button>
+              <button
+                id="mode-percent-button"
+                type="button"
+                aria-pressed="false"
+                class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-600 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+              >
+                Percent
+              </button>
+            </div>
+          </div>
+
+          <div class="chart-shell rounded-xl border border-slate-200 bg-slate-50 p-2 sm:p-4">
+            <canvas id="voter-chart" role="img" aria-label="Voter registration over time chart"></canvas>
+          </div>
+
+          <div class="mt-4 max-h-96 overflow-auto rounded-xl border border-slate-200">
+            <table class="w-full min-w-[420px] text-sm">
+              <caption class="sr-only">Voter registration counts by party for every reporting snapshot</caption>
+              <thead class="sticky top-0 bg-slate-50">
+                <tr>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold text-slate-700">Date</th>
+                  <th scope="col" class="px-3 py-2 text-right font-semibold text-slate-700">Republican</th>
+                  <th scope="col" class="px-3 py-2 text-right font-semibold text-slate-700">Democratic</th>
+                  <th scope="col" class="px-3 py-2 text-right font-semibold text-slate-700">Other</th>
+                </tr>
+              </thead>
+              <tbody id="figures-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm text-sm text-slate-600 lg:hidden">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Notes &amp; sources</h2>
+          <p class="mt-2">
+            Snapshot totals come from South Dakota Secretary of State voter registration reports.
+            &ldquo;Other&rdquo; combines Libertarian, independent, no-party-affiliation and all remaining
+            categories aside from Republican and Democratic; inactive registrations are excluded.
+          </p>
+          <p class="mt-3">
+            <a
+              href="https://github.com/cjwinchester/south-dakota-voter-registration-data"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900 hover:decoration-blue-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded"
+            >
+              Source code &amp; data on GitHub
+              <span class="sr-only">(opens in a new tab)</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                <path
+                  d="M11 3a1 1 0 1 0 0 2h2.586L8.293 10.293a1 1 0 0 0 1.414 1.414L15 6.414V9a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-5Z"
+                />
+                <path
+                  d="M5 5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3a1 1 0 1 0-2 0v3H5V7h3a1 1 0 0 0 0-2H5Z"
+                />
+              </svg>
+            </a>
+          </p>
+          <p class="mt-2">
+            <a
+              href="https://raw.githubusercontent.com/cjwinchester/south-dakota-voter-registration-data/refs/heads/main/sd-voter-registration-data-simplified.csv"
+              class="inline-flex items-center gap-1 font-medium text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-900 hover:decoration-blue-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 rounded"
+            >
+              Download the underlying CSV
+              <svg viewBox="0 0 20 20" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                <path
+                  d="M10 12.5a.75.75 0 0 0 .53-.22l3.25-3.25a.75.75 0 0 0-1.06-1.06L10.75 9.94V3a.75.75 0 0 0-1.5 0v6.94L7.28 7.97a.75.75 0 0 0-1.06 1.06l3.25 3.25c.14.14.331.22.53.22Z"
+                />
+                <path
+                  d="M4.75 12.5a.75.75 0 0 0-1.5 0v2.5A2.25 2.25 0 0 0 5.5 17.25h9A2.25 2.25 0 0 0 16.75 15v-2.5a.75.75 0 0 0-1.5 0V15a.75.75 0 0 1-.75.75h-9a.75.75 0 0 1-.75-.75v-2.5Z"
+                />
+              </svg>
+            </a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const PARTY_ORDER = ['republican', 'democratic', 'other'];
+      const PARTY_COLORS = {
+        democratic: { border: '#1E40AF', fill: 'rgba(30, 64, 175, 0.65)' },
+        republican: { border: '#B91C1C', fill: 'rgba(185, 28, 28, 0.65)' },
+        other: { border: '#B45309', fill: 'rgba(180, 83, 9, 0.65)' }
+      };
+
+      // draws a vertical line at the hovered date so it's easier to compare
+      // all three party values at that point, since tooltip.mode: 'index'
+      // shows them together but doesn't otherwise mark where "there" is
+      const crosshairPlugin = {
+        id: 'crosshair',
+        afterDraw(chart) {
+          const active = chart.tooltip?._active;
+          if (!active || !active.length) return;
+
+          const { ctx, chartArea } = chart;
+          const x = active[0].element.x;
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(x, chartArea.top);
+          ctx.lineTo(x, chartArea.bottom);
+          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'rgba(15, 23, 42, 0.35)';
+          ctx.setLineDash([4, 4]);
+          ctx.stroke();
+          ctx.restore();
+        }
+      };
+
+      const state = {
+        statewideData: null,
+        counties: {},
+        countyNames: [],
+        countyFipsByName: {},
+        countyNameByFips: {},
+        selectedCounty: null,
+        chart: null,
+        chartMode: 'count',
+        currentChartData: null,
+        currentChartTitle: '',
+        currentFiguresData: null,
+        currentFiguresLabel: '',
+        filteredOptions: [],
+        activeOptionIndex: -1
+      };
+
+      const countyInput = document.getElementById('county-input');
+      const clearInputButton = document.getElementById('clear-input-button');
+      const countyListbox = document.getElementById('county-listbox');
+      const chartHeading = document.getElementById('chart-heading');
+      const figuresTableBody = document.getElementById('figures-table-body');
+      const countyMap = document.getElementById('county-map');
+      const resetButton = document.getElementById('reset-button');
+      const mapWrapper = document.getElementById('map-wrapper');
+      const toggleMapButton = document.getElementById('toggle-map-button');
+      const toggleMapButtonLabel = document.getElementById('toggle-map-button-label');
+      const modeCountButton = document.getElementById('mode-count-button');
+      const modePercentButton = document.getElementById('mode-percent-button');
+
+      function formatNumber(value) {
+        return new Intl.NumberFormat('en-US').format(Math.round(value));
+      }
+
+      function formatDate(isoDate) {
+        const parsed = new Date(`${isoDate}T00:00:00`);
+        if (Number.isNaN(parsed.getTime())) return isoDate;
+        return parsed.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+      }
+
+      function sortByParty(datasets) {
+        return [...(datasets || [])].sort(
+          (a, b) =>
+            PARTY_ORDER.indexOf((a.label || '').toLowerCase()) - PARTY_ORDER.indexOf((b.label || '').toLowerCase())
+        );
+      }
+
+      function makeCountyLookupFromJson() {
+        for (const [fips, county] of Object.entries(state.counties)) {
+          state.countyFipsByName[county.name] = fips;
+          state.countyNameByFips[fips] = county.name;
+          state.countyNames.push(county.name);
+        }
+
+        state.countyNames.sort();
+      }
+
+      // ---- accessible combobox (WAI-ARIA combobox pattern) ----
+
+      function closeListbox() {
+        countyListbox.classList.remove('is-open');
+        countyInput.setAttribute('aria-expanded', 'false');
+        countyInput.removeAttribute('aria-activedescendant');
+        state.activeOptionIndex = -1;
+      }
+
+      function setActiveOption(index) {
+        const options = countyListbox.querySelectorAll('.county-option');
+        options.forEach((option) => option.setAttribute('aria-selected', 'false'));
+
+        if (index >= 0 && options[index]) {
+          options[index].setAttribute('aria-selected', 'true');
+          options[index].scrollIntoView({ block: 'nearest' });
+          countyInput.setAttribute('aria-activedescendant', options[index].id);
+        } else {
+          countyInput.removeAttribute('aria-activedescendant');
+        }
+
+        state.activeOptionIndex = index;
+      }
+
+      function openListboxWithOptions(matches) {
+        state.filteredOptions = matches;
+
+        if (!matches.length) {
+          closeListbox();
+          return;
+        }
+
+        countyListbox.innerHTML = matches
+          .map(
+            (name, index) => `
+              <li
+                id="county-option-${index}"
+                role="option"
+                aria-selected="false"
+                class="county-option px-3 py-2 text-sm text-slate-800"
+              >${name}</li>
+            `
+          )
+          .join('');
+
+        countyListbox.classList.add('is-open');
+        countyInput.setAttribute('aria-expanded', 'true');
+        setActiveOption(-1);
+      }
+
+      function filterCounties(query) {
+        const normalizedQuery = query.trim().toLowerCase();
+
+        if (!normalizedQuery) {
+          closeListbox();
+          return;
+        }
+
+        const matches = state.countyNames.filter((name) => name.toLowerCase().includes(normalizedQuery));
+        openListboxWithOptions(matches);
+      }
+
+      function chooseCounty(name) {
+        selectCounty(name);
+        closeListbox();
+        countyInput.focus();
+      }
+
+      countyInput.addEventListener('input', (event) => {
+        const value = event.target.value;
+        clearInputButton.hidden = !value;
+
+        if (!value) {
+          selectCounty(null);
+          return;
+        }
+
+        filterCounties(value);
+      });
+
+      countyInput.addEventListener('keydown', (event) => {
+        const isOpen = countyListbox.classList.contains('is-open');
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          if (!isOpen) {
+            filterCounties(countyInput.value || '');
+            return;
+          }
+          setActiveOption(Math.min(state.activeOptionIndex + 1, state.filteredOptions.length - 1));
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (isOpen) {
+            setActiveOption(Math.max(state.activeOptionIndex - 1, 0));
+          }
+        } else if (event.key === 'Enter') {
+          if (isOpen && state.activeOptionIndex >= 0) {
+            event.preventDefault();
+            chooseCounty(state.filteredOptions[state.activeOptionIndex]);
+          }
+        } else if (event.key === 'Escape') {
+          if (isOpen) {
+            closeListbox();
+          } else {
+            countyInput.value = '';
+            clearInputButton.hidden = true;
+            selectCounty(null);
+          }
+        }
+      });
+
+      countyListbox.addEventListener('mousedown', (event) => {
+        const option = event.target.closest('.county-option');
+        if (!option) return;
+        event.preventDefault();
+        chooseCounty(option.textContent.trim());
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('#county-input') && !event.target.closest('#county-listbox')) {
+          closeListbox();
+        }
+      });
+
+      clearInputButton.addEventListener('click', () => {
+        countyInput.value = '';
+        clearInputButton.hidden = true;
+        closeListbox();
+        selectCounty(null);
+        countyInput.focus();
+      });
+
+      // ---- figures table + chart rendering ----
+
+      function renderFiguresTable(data, label) {
+        state.currentFiguresData = data;
+        state.currentFiguresLabel = label;
+
+        const labels = data.labels || [];
+        const datasets = sortByParty(data.datasets).map((dataset) => ({
+          ...dataset,
+          data: (dataset.data || []).map((value) => Number(value || 0))
+        }));
+        const isPercent = state.chartMode === 'percent';
+
+        if (!labels.length || !datasets.length) {
+          figuresTableBody.innerHTML = '';
+          return;
+        }
+
+        const totals = labels.map((_, index) => datasets.reduce((sum, dataset) => sum + dataset.data[index], 0));
+
+        const rows = labels
+          .map((date, index) => {
+            const cells = datasets
+              .map((dataset) => {
+                const rawValue = dataset.data[index];
+                const displayValue = isPercent
+                  ? `${totals[index] ? ((rawValue / totals[index]) * 100).toFixed(1) : '0.0'}%`
+                  : formatNumber(rawValue);
+                return `<td class="px-3 py-2 text-right text-slate-700">${displayValue}</td>`;
+              })
+              .join('');
+
+            return `
+              <tr class="border-t border-slate-100 even:bg-slate-50">
+                <td class="px-3 py-2 text-left text-slate-700">${formatDate(date)}</td>
+                ${cells}
+              </tr>
+            `;
+          })
+          .reverse();
+
+        figuresTableBody.innerHTML = rows.join('');
+      }
+
+      function setChartMode(mode) {
+        if (state.chartMode === mode) return;
+        state.chartMode = mode;
+        modeCountButton.setAttribute('aria-pressed', String(mode === 'count'));
+        modeCountButton.classList.toggle('bg-white', mode === 'count');
+        modeCountButton.classList.toggle('shadow-sm', mode === 'count');
+        modeCountButton.classList.toggle('text-slate-900', mode === 'count');
+        modeCountButton.classList.toggle('text-slate-600', mode !== 'count');
+        modePercentButton.setAttribute('aria-pressed', String(mode === 'percent'));
+        modePercentButton.classList.toggle('bg-white', mode === 'percent');
+        modePercentButton.classList.toggle('shadow-sm', mode === 'percent');
+        modePercentButton.classList.toggle('text-slate-900', mode === 'percent');
+        modePercentButton.classList.toggle('text-slate-600', mode !== 'percent');
+
+        if (state.currentChartData) {
+          renderChart(state.currentChartData, state.currentChartTitle);
+        }
+        if (state.currentFiguresData) {
+          renderFiguresTable(state.currentFiguresData, state.currentFiguresLabel);
+        }
+      }
+
+      modeCountButton.addEventListener('click', () => setChartMode('count'));
+      modePercentButton.addEventListener('click', () => setChartMode('percent'));
+
+      function renderChart(data, chartTitle) {
+        state.currentChartData = data;
+        state.currentChartTitle = chartTitle;
+        chartHeading.textContent = chartTitle;
+
+        const labels = data.labels || [];
+        const isPercent = state.chartMode === 'percent';
+
+        const rawDatasets = sortByParty(data.datasets).map((dataset) => ({
+          label: dataset.label,
+          key: (dataset.label || '').toLowerCase(),
+          raw: (dataset.data || []).map((value) => Number(value || 0))
+        }));
+
+        const totals = labels.map((_, index) => rawDatasets.reduce((sum, dataset) => sum + dataset.raw[index], 0));
+
+        const datasets = rawDatasets.map((dataset) => {
+          const colors = PARTY_COLORS[dataset.key] || { border: '#64748b', fill: 'rgba(100, 116, 139, 0.65)' };
+          const displayData = isPercent
+            ? dataset.raw.map((value, index) => (totals[index] ? (value / totals[index]) * 100 : 0))
+            : dataset.raw;
+
+          return {
+            label: dataset.label,
+            data: displayData,
+            rawValues: dataset.raw,
+            fill: true,
+            borderColor: colors.border,
+            backgroundColor: colors.fill,
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.28
+          };
+        });
+
+        const isFirstRender = !state.chart;
+
+        if (state.chart) {
+          state.chart.destroy();
+        }
+
+        state.chart = new Chart(document.getElementById('voter-chart'), {
+          type: 'line',
+          data: { labels, datasets },
+          plugins: [crosshairPlugin],
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            // only animate the very first draw - re-animating every county
+            // switch or count/percent toggle is more distracting than useful
+            animation: isFirstRender ? {} : false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  boxWidth: 14,
+                  boxHeight: 14,
+                  usePointStyle: true,
+                  pointStyle: 'rectRounded',
+                  padding: 18,
+                  color: '#0f172a',
+                  font: { size: 13, weight: '600' },
+                  generateLabels(chart) {
+                    return chart.data.datasets.map((dataset, index) => ({
+                      text: dataset.label,
+                      fillStyle: dataset.borderColor,
+                      strokeStyle: dataset.borderColor,
+                      lineWidth: 0,
+                      pointStyle: 'rectRounded',
+                      hidden: !chart.isDatasetVisible(index),
+                      datasetIndex: index
+                    }));
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  title(items) {
+                    return formatDate(items[0].label);
+                  },
+                  label(context) {
+                    const rawValue = context.dataset.rawValues?.[context.dataIndex] ?? context.parsed.y;
+                    if (isPercent) {
+                      return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}% (${formatNumber(rawValue)})`;
+                    }
+                    return `${context.dataset.label}: ${formatNumber(context.parsed.y)}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { maxTicksLimit: 10, autoSkip: true },
+                grid: { color: '#e2e8f0' }
+              },
+              y: {
+                stacked: true,
+                beginAtZero: true,
+                max: isPercent ? 100 : undefined,
+                ticks: { callback: (value) => (isPercent ? `${value}%` : formatNumber(value)) },
+                grid: { color: '#e2e8f0' }
+              }
+            }
+          }
+        });
+      }
+
+      function updateMapSelection() {
+        const svg = countyMap.querySelector('svg');
+        if (!svg) return;
+
+        const activeFips = state.selectedCounty ? state.countyFipsByName[state.selectedCounty] : null;
+
+        svg.querySelectorAll('path.county-shape').forEach((path) => {
+          const shouldHighlight = !!activeFips && path.getAttribute('id') === activeFips;
+          path.classList.toggle('is-selected', shouldHighlight);
+          path.setAttribute('aria-pressed', shouldHighlight ? 'true' : 'false');
+        });
+      }
+
+      function selectCounty(countyName) {
+        const normalized = countyName && state.countyNames.includes(countyName) ? countyName : null;
+        state.selectedCounty = normalized;
+        countyInput.value = normalized || '';
+        clearInputButton.hidden = !normalized;
+
+        updateMapSelection();
+
+        if (!normalized) {
+          renderFiguresTable(state.statewideData, 'Statewide');
+          renderChart(state.statewideData, 'Statewide');
+          return;
+        }
+
+        const fips = state.countyFipsByName[normalized];
+        const chartData = state.counties[fips];
+        renderFiguresTable(chartData, `${normalized} County`);
+        renderChart(chartData, `${normalized} County`);
+      }
+
+      function bindMapInteractions(svg) {
+        svg.querySelectorAll('path.county-shape').forEach((path) => {
+          const countyName = state.countyNameByFips[path.getAttribute('id')];
+          if (!countyName) return;
+
+          path.setAttribute('tabindex', '0');
+          path.setAttribute('role', 'button');
+          path.setAttribute('aria-label', `Select ${countyName} county`);
+
+          path.addEventListener('click', () => selectCounty(countyName));
+          path.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              selectCounty(countyName);
+            }
+          });
+        });
+      }
+
+      async function loadMapSvg() {
+        const response = await fetch('https://raw.githubusercontent.com/cjwinchester/sd-counties-map/main/index.html');
+        if (!response.ok) {
+          throw new Error('Failed to load county map');
+        }
+        const mapHtml = await response.text();
+
+        const template = document.createElement('template');
+        template.innerHTML = mapHtml;
+        const svg = template.content.querySelector('svg');
+
+        if (!svg) {
+          throw new Error('No SVG was found in the county map source');
+        }
+
+        // keep the source SVG's own viewBox so path coordinates still line up -
+        // overriding it (eg to "0 0 100 100") stretches the huge stroke widths
+        // in the path data until they cover the whole map in black
+        svg.removeAttribute('width');
+        svg.removeAttribute('height');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', 'South Dakota county map');
+
+        svg.querySelectorAll('path[id]').forEach((path) => {
+          path.classList.add('county-shape');
+        });
+
+        countyMap.innerHTML = '';
+        countyMap.appendChild(svg);
+
+        bindMapInteractions(svg);
+        updateMapSelection();
+      }
+
+      resetButton.addEventListener('click', () => {
+        countyInput.value = '';
+        clearInputButton.hidden = true;
+        closeListbox();
+        selectCounty(null);
+      });
+
+      toggleMapButton.addEventListener('click', () => {
+        const isOpen = mapWrapper.classList.toggle('map-collapsed') === false;
+        toggleMapButton.setAttribute('aria-expanded', String(isOpen));
+        toggleMapButtonLabel.textContent = isOpen ? 'Hide map' : 'Show map';
+      });
+
+      async function initialize() {
+        const response = await fetch('./south-dakota-voter-registration.json');
+        if (!response.ok) {
+          throw new Error('Unable to load the voter registration JSON');
+        }
+
+        const data = await response.json();
+        state.statewideData = { labels: data.labels, datasets: data.datasets };
+        state.counties = data.counties || {};
+
+        makeCountyLookupFromJson();
+
+        try {
+          await loadMapSvg();
+        } catch (error) {
+          console.error(error);
+          countyMap.innerHTML = `
+            <p class="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+              Unable to load the county map.
+            </p>
+          `;
+        }
+
+        selectCounty(null);
+      }
+
+      initialize().catch((error) => {
+        console.error(error);
+        chartHeading.textContent = 'Unable to load voter registration data';
+        figuresTableBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="px-3 py-3 text-sm text-red-800">
+              Unable to load data. Check the local server and try again.
+            </td>
+          </tr>
+        `;
+      });
+    </script>
+  </body>
+</html>
