@@ -322,6 +322,9 @@
 
     <script>
       const PARTY_ORDER = ['republican', 'democratic', 'other'];
+
+      // the county map source hasn't been updated for this 2015 rename
+      const COUNTY_NAME_ALIASES = { Shannon: 'Oglala Lakota' };
       const PARTY_COLORS = {
         democratic: { border: '#1E40AF', fill: 'rgba(30, 64, 175, 0.65)' },
         republican: { border: '#B91C1C', fill: 'rgba(185, 28, 28, 0.65)' },
@@ -357,7 +360,6 @@
         counties: {},
         countyNames: [],
         countyFipsByName: {},
-        countyNameByFips: {},
         selectedCounty: null,
         chart: null,
         chartMode: 'count',
@@ -399,7 +401,6 @@
       function makeCountyLookupFromJson() {
         for (const [fips, county] of Object.entries(state.counties)) {
           state.countyFipsByName[county.name] = fips;
-          state.countyNameByFips[fips] = county.name;
           state.countyNames.push(county.name);
         }
 
@@ -729,10 +730,8 @@
         const svg = countyMap.querySelector('svg');
         if (!svg) return;
 
-        const activeFips = state.selectedCounty ? state.countyFipsByName[state.selectedCounty] : null;
-
         svg.querySelectorAll('path.county-shape').forEach((path) => {
-          const shouldHighlight = !!activeFips && path.getAttribute('id') === activeFips;
+          const shouldHighlight = !!state.selectedCounty && path.dataset.county === state.selectedCounty;
           path.classList.toggle('is-selected', shouldHighlight);
           path.setAttribute('aria-pressed', shouldHighlight ? 'true' : 'false');
         });
@@ -760,8 +759,8 @@
 
       function bindMapInteractions(svg) {
         svg.querySelectorAll('path.county-shape').forEach((path) => {
-          const countyName = state.countyNameByFips[path.getAttribute('id')];
-          if (!countyName) return;
+          const countyName = path.dataset.county;
+          if (!countyName || !state.countyNames.includes(countyName)) return;
 
           path.setAttribute('tabindex', '0');
           path.setAttribute('role', 'button');
@@ -801,8 +800,19 @@
         svg.setAttribute('role', 'img');
         svg.setAttribute('aria-label', 'South Dakota county map');
 
+        // the source map's own FIPS ids can be out of date (eg it still uses
+        // Shannon County's old id/name for what's now Oglala Lakota County),
+        // so match counties by the path's <title> text instead of its id
         svg.querySelectorAll('path[id]').forEach((path) => {
           path.classList.add('county-shape');
+
+          const titleText = path.querySelector('title')?.textContent?.trim() || '';
+          const rawName = titleText.replace(/\s+County\s*$/i, '');
+          const countyName = COUNTY_NAME_ALIASES[rawName] || rawName;
+
+          if (countyName) {
+            path.dataset.county = countyName;
+          }
         });
 
         countyMap.innerHTML = '';
